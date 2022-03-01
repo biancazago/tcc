@@ -1,0 +1,118 @@
+<form [formGroup]="formulario" (submit)="salvar(formulario)">
+    <div class="ui-g-8 ui-md-8 ui-sm-8">
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-12 ui-sm-12">
+                <div class="ui-g-12 ui-md-12 ui-sm-12">
+                    <div class="display-flex">
+                        <span class="font-weight-bold">Nova Pergunta:</span>
+                    </div>
+                    <div class="padding-left-2 padding-top-3">
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <p-editor [readonly]="false" formControlName="descricao"
+                                    [(ngModel)]="pergunta.descricao" [style]="{'height':'320px'}">
+                                </p-editor>
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['descricao'].valid &&
+                formulario.controls['descricao'].dirty || formulario.controls['descricao'].touched && !formulario.controls['descricao'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <input type="text" class="g-inputtext" [(ngModel)]="pergunta.opcao1"
+                                    formControlName="opcao1" required pInputText maxlength="100" />
+                                <label for="opcao1">Opção 1</label>
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['opcao1'].valid &&
+            formulario.controls['opcao1'].dirty || formulario.controls['opcao1'].touched && !formulario.controls['opcao1'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <input type="text" class="g-inputtext" [(ngModel)]="pergunta.opcao2"
+                                    formControlName="opcao2" required pInputText maxlength="100" />
+                                <label for="opcao2">Opção 2</label>
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['opcao2'].valid &&
+                formulario.controls['opcao2'].dirty || formulario.controls['opcao2'].touched && !formulario.controls['opcao2'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <input type="text" class="g-inputtext" [(ngModel)]="pergunta.opcao3"
+                                    formControlName="opcao3" required pInputText maxlength="100" />
+                                <label for="opcao3">Opção 3</label>
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['opcao3'].valid &&
+                    formulario.controls['opcao3'].dirty || formulario.controls['opcao3'].touched && !formulario.controls['opcao3'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <input type="text" class="g-inputtext" [(ngModel)]="pergunta.opcao4"
+                                    formControlName="opcao4" required pInputText maxlength="100" />
+                                <label for="opcao4">Opção 4</label>
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['opcao4'].valid &&
+                        formulario.controls['opcao4'].dirty || formulario.controls['opcao4'].touched && !formulario.controls['opcao4'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <input type="text" class="g-inputtext" [(ngModel)]="pergunta.opcao5"
+                                    formControlName="opcao5" required pInputText maxlength="100" />
+                                <label for="opcao5">Opção 5</label>
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['opcao5'].valid &&
+                            formulario.controls['opcao5'].dirty || formulario.controls['opcao5'].touched && !formulario.controls['opcao5'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <p-dropdown [options]="opcoes" [virtualScroll]="true" itemSize="30"></p-dropdown>
+
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['opcaoCorreta'].valid &&
+                                formulario.controls['opcaoCorreta'].dirty || formulario.controls['opcaoCorreta'].touched && !formulario.controls['opcaoCorreta'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-g-12">
+                <hr>
+                <div class="padding-top-1 display-flex justify-content-end">
+                    <div class="padding-right-1">
+                        <p-button class="g-button  button-cancelar margin-left-3" (click)="voltar()" label="CANCELAR">
+                        </p-button>
+                    </div>
+                    <div class="padding-right-1">
+                        <p-button class="g-button  button-primary" type="submit" label="SALVAR"
+                            [disabled]="!formulario.valid">
+                        </p-button>
+                    </div>
+                </div>
+            </div>
+        </p-footer>
+    </div>
+
+</form>

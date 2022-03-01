@@ -1,0 +1,261 @@
+@import "./variables.scss";
+
+.g-checkbox-conteiner {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    height: 0px;
+}
+
+.g-inputgroup.ui-inputgroup {
+    margin-top: 24px;
+    .ui-inputgroup-addon {
+        border: none;
+        background-color: transparent !important;
+    }
+}
+
+.g-inputtext {
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    width: 100% !important;
+    &:focus {
+        box-shadow: none !important;
+    }
+}
+
+.g-dropdown {
+    width: 100%;
+    .ui-dropdown {
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        min-width: 0px;
+        width: 100%;
+        box-shadow: none !important;
+    }
+}
+
+.g-calendar {
+    .ui-calendar {
+        .ui-inputtext {
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            &:focus {
+                box-shadow: none !important;
+            }
+        }
+        .ui-calendar-button {
+            background-color: transparent;
+            border: none;
+            &:hover {
+                background-color: lightgray;
+            }
+            .ui-button-icon-left {
+                color: grey;
+            }
+        }
+    }
+}
+
+.g-button {
+    button {
+        border: none;
+        &:active {
+            filter: brightness(1.3);
+        }
+        &:focus {
+            box-shadow: none !important;
+        }
+    }
+}
+
+.g-button.button-primary {
+    button {
+        background-color: $color-primary;
+        &:hover {
+            background-color: $color-secondary !important;
+        }
+    }
+}
+
+.g-button.button-retroativo {
+    button {
+        font-size: 12px;
+        background-color: #629C44;
+
+        &:hover {
+            background-color: #629C44 !important;
+        }
+    }
+}
+
+.g-button.button-check-green {
+    button {
+        font-size: 16px;
+        background-color: rgb(126, 245, 142);
+        border: none;
+        color:  rgb(50, 150, 10);
+        border-radius: 50%;
+
+        &:hover {
+            color:rgb(50, 150, 10)  !important;
+            background-color:  rgb(126, 245, 142)  !important;
+        }
+    }
+}
+
+.g-button.button-check-grey {
+    button {
+        font-size: 16px;
+        background-color: rgb(213, 216, 213);
+        border: none;
+        color:  rgb(136, 138, 135);
+        border-radius: 50%;
+
+        &:hover {
+            color:rgb(136, 138, 135) !important;
+            background-color: rgb(213, 216, 213) !important;
+        }
+    }
+}
+
+
+.g-button.button-trash {
+    button {
+        background-color: rgb(226, 106, 85);
+        border: none;
+        border-radius: 50%;
+        font-size: 16px;
+        color: rgb(163, 32, 22);
+
+        &:hover {
+            color:rgb(163, 32, 22) !important;
+            background-color:rgb(226, 106, 85) !important;
+        }
+    }
+}
+
+.g-button.button-secondary {
+    button {
+        background-color: $color-secondary;
+        border: none;
+        &:hover {
+            background-color: $color-primary !important;
+        }
+    }
+}
+
+.g-button.button-cancelar {
+    button {
+        background-color: white;
+        border: 1px solid $color-primary; /* borda branca em volta */
+        color: $color-primary;
+        &:hover {
+            background-color: $color-secondary !important;
+        }
+    }
+}
+
+.g-button.button-primary-green {
+    button {
+        background-color: #629b43;
+        &:hover {
+            background-color: #629b43 !important;
+        }
+    }
+}
+
+.g-button.button-dark-green {
+    button {
+        border-radius: 25%;
+        background-color: rgb(50, 150, 10);
+        font-size: 12px;
+        &:hover {
+            border-radius: 25%;
+            font-size: 12px;
+            background-color: rgb(50, 150, 10) !important;
+        }
+    }
+}
+
+.g-button.button-primary-red {
+    button {
+        background-color: #852808;
+        &:hover {
+            background-color: #852808 !important;
+        }
+    }
+}
+
+.g-button.button-round {
+    button {
+        background-color: tomato;
+        border: none;
+        border-radius: 50%;
+        font-size: 22px;
+        font-weight: bold;
+        &:hover {
+            background-color: tomato !important;
+        }
+    }
+}
+
+
+.g-button.button-white {
+    button {
+        background-color: white;
+        color: #629b43;
+        &:hover {
+            color: #629b43 !important;
+            background-color: white !important;
+        }
+    }
+}
+
+.g-listbox {
+    width: 100%;
+    .ui-listbox {
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        min-width: 0px;
+        width: 100%;
+    }
+}
+
+
+.ui-selectbutton{
+    .ui-button{
+        border: 5px solid white !important;
+        background-color: $color-primary !important;
+        color: white !important;
+
+    }
+    .ui-state-active{
+        background-color: #34739c !important;
+    }
+}
+
+body .ui-inputtext.ng-dirty.ng-invalid {
+    border: none;
+}
+
+body .ui-dialog .ui-dialog-content {
+    border: 1px solid #c8c8c8;
+    border-bottom: 0 none;
+    border-top: 0 none;
+    padding-top: 0px;
+}
+
+body .ui-dialog .ui-dialog-titlebar {
+    border: 1px solid #c8c8c8;
+    background-color: white;
+    color: #333333;
+    padding: 1em;
+    padding-bottom: 0em;
+    font-weight: 700;
+    font-size: 24px;
+    border-bottom: 0px none;
+}

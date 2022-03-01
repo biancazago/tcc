@@ -1,0 +1,106 @@
+<form [formGroup]="formulario" (submit)="salvar(formulario)">
+    <div class="ui-g-8 ui-md-8 ui-sm-8">
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-12 ui-sm-12">
+                <div class="ui-g-12 ui-md-12 ui-sm-12">
+                    <div class="display-flex">
+                        <span class="font-weight-bold">Nova Prova:</span>
+                    </div>
+                    <div class="padding-left-2">
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <input type="text" class="g-inputtext" [(ngModel)]="prova.nome"
+                                    formControlName="nome" required pInputText maxlength="100" />
+                                <label for="nome">Nome</label>
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['nome'].valid &&
+            formulario.controls['nome'].dirty || formulario.controls['nome'].touched && !formulario.controls['nome'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+                            <div class="display-flex">
+                                <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                    <textarea pInputTextarea class="g-inputtext" [(ngModel)]="prova.descricao"
+                                        formControlName="descricao" maxlength="250" required></textarea>
+                                    <label for="descricao">Descrição</label>
+                                </div>
+                            </div>
+                            <p-message severity="error"
+                                *ngIf="!formulario.controls['descricao'].valid &&
+                    formulario.controls['descricao'].dirty || formulario.controls['descricao'].touched && !formulario.controls['descricao'].valid"
+                                text="Campo Obrigatório"></p-message>
+    
+                    </div>
+
+                    <div class="ui-g-12 ui-md-12 ui-sm-12 padding-top-1">
+                        <!-- <p-dataView [value]="perguntas">
+                            <ng-template pTemplate="header">Lista de Perguntas</ng-template>
+
+                            <ng-template let-pergunta pTemplate="listItem">
+                                <div>
+                                    <p-checkbox (click)="insereListaSelecionados(pergunta.id)">
+                                    </p-checkbox>
+                                    {{pergunta.id}} - {{pergunta.descricao}}
+                                </div>
+
+                            </ng-template>
+                        </p-dataView> -->
+                        <p-table [columns]="cols" [value]="pageResponse.content" [paginator]="true" [rows]="10" [lazy]="true"
+                (onPage)="preencherTabela()" emptyMessage="Nenhum registro encontrado"
+                [totalRecords]="pageResponse.totalElements" [(selection)]="selectedCars3" dataKey="vin">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th style="width: 3em">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                        
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr>
+
+                        <td>
+                            <p-checkbox (click)="insereListaSelecionados(rowData.id)">
+                            </p-checkbox>
+                        </td>
+                        <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                        </td>
+                        
+                    </tr>
+                </ng-template>
+                <!-- <ng-template pTemplate="summary">
+                    <ul>
+                        <li *ngFor="let car of selectedCars3" style="text-align: left">
+                            {{car.vin + ' - ' + car.brand + ' - ' + car.year + ' - ' + car.color}}
+                        </li>
+                    </ul>
+                </ng-template> -->
+            </p-table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p-footer>
+            <div class="ui-g-12">
+                <hr>
+                <div class="padding-top-1 display-flex justify-content-end">
+                    <div class="padding-right-1">
+                        <p-button class="g-button  button-cancelar margin-left-3" (click)="voltar()" label="CANCELAR">
+                        </p-button>
+                    </div>
+                    <div class="padding-right-1">
+                        <p-button class="g-button  button-primary" type="submit" label="SALVAR"
+                            [disabled]="!formulario.valid">
+                        </p-button>
+                    </div>
+                </div>
+            </div>
+        </p-footer>
+    </div>
+</form>

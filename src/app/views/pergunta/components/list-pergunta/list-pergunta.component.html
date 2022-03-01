@@ -1,0 +1,46 @@
+<div class="ui-g-8 ui-md-8 ui-sm-8">
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-12 ui-sm-12">
+            <div class="display-flex ">
+                <span class="font-weight-bold"> Lista de perguntas:</span>
+            </div>
+
+
+            <p-table [columns]="cols" [value]="pageResponse.content" [paginator]="true" [rows]="10" [lazy]="true"
+                (onPage)="preencherTabela()" emptyMessage="Nenhum registro encontrado"
+                [totalRecords]="pageResponse.totalElements">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                        <th>
+                            {{"Botões"}}
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr>
+
+                        <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                        </td>
+                        <td>
+                            <div class="display-flex flex-wrap justify-content-end">
+                                <span class="margin-x-1 ui-inputgroup-addon font-size-20px">
+                                    <i (click)="editar(rowData.id)" class="pi pi-pencil cursor-pointer "></i>
+                                </span>
+                                <span class="margin-x-1 ui-inputgroup-addon font-size-20px">
+                                    <i (click)="excluir(rowData.id)" class="pi pi-trash cursor-pointer"></i>
+                                </span>
+                                <span class="margin-x-1 ui-inputgroup-addon font-size-20px">
+                                    <i (click)="visualizar(rowData.id)" class="pi pi-eye cursor-pointer"></i>
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

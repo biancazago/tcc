@@ -1,0 +1,77 @@
+<form [formGroup]="formulario" (submit)="salvar(formulario)">
+    <div class="ui-g-8 ui-md-8 ui-sm-8">
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-12 ui-sm-12">
+                <div class="ui-g-12 ui-md-12 ui-sm-12">
+                    <div class="display-flex">
+                        <span class="font-weight-bold"> Realizando Prova:</span>
+                    </div>
+                    <div class="padding-left-2">
+                        <div class="display-flex">
+                            <p> {{prova.descricao}} </p>
+                        </div>
+
+                        <div *ngFor="let pergunta of prova.perguntaLista; index as i">
+
+                            <div class="padding-top-4">
+                                <p-editor [readonly]="true" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="pergunta.descricao" [style]="{'height':'320px'}">
+                                    <p-header>
+                                        <span class="ql-formats">
+                                            Pergunta {{i + 1}}
+                                        </span>
+                                    </p-header>
+                                </p-editor>
+
+                            </div>
+                            <div class="ui-g-12 ui-md-12 ui-sm-12"></div>
+
+                            <div class="padding-top-1">
+                                <p-radioButton [ngModelOptions]="{standalone: true}" name="{{pergunta.id}}"
+                                    value="{{'opcao1'}}" label="{{pergunta.opcao1}}" [(ngModel)]="selectedValue[i]">
+                                </p-radioButton>
+                            </div>
+                            <div>
+                                <p-radioButton [ngModelOptions]="{standalone: true}" name="{{pergunta.id}}"
+                                    value="{{'opcao2'}}" label="{{pergunta.opcao2}}" [(ngModel)]="selectedValue[i]">
+                                </p-radioButton>
+                            </div>
+                            <div>
+                                <p-radioButton [ngModelOptions]="{standalone: true}" name="{{pergunta.id}}"
+                                    value="{{'opcao3'}}" label="{{pergunta.opcao3}}" [(ngModel)]="selectedValue[i]">
+                                </p-radioButton>
+                            </div>
+                            <div>
+                                <p-radioButton [ngModelOptions]="{standalone: true}" name="{{pergunta.id}}"
+                                    value="{{'opcao4'}}" label="{{pergunta.opcao4}}" [(ngModel)]="selectedValue[i]">
+                                </p-radioButton>
+                            </div>
+                            <div>
+                                <p-radioButton [ngModelOptions]="{standalone: true}" name="{{pergunta.id}}"
+                                    value="{{'opcao5'}}" label="{{pergunta.opcao5}}" [(ngModel)]="selectedValue[i]">
+                                </p-radioButton>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-g-12">
+                <hr>
+                <div class="padding-top-1 display-flex justify-content-end">
+                    <div class="padding-right-1">
+                        <p-button class="g-button  button-cancelar margin-left-3" (click)="voltar()" label="CANCELAR">
+                        </p-button>
+                    </div>
+                    <div class="padding-right-1">
+                        <p-button class="g-button  button-primary" type="submit" label="SALVAR"
+                            [disabled]="!formulario.valid">
+                        </p-button>
+                    </div>
+                </div>
+            </div>
+        </p-footer>
+    </div>
+</form>
