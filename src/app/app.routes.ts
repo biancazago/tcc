@@ -10,6 +10,7 @@ const routes: Routes = [
     loadChildren: () => import('./views/login/login.module').then(m => m.LoginModule)
 
   },
+  
   { 
     path: 'prova', 
     loadChildren: () => import('./views/prova/prova.module').then(m => m.ProvaModule)

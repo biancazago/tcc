@@ -17,10 +17,11 @@ export class ListProvaComponent implements OnInit {
 
 
   cols = [
-    { field: 'id', header: 'ID' },
-    { field: 'nome', header: 'Nome' },
-    { field: 'descricao', header: 'Descrição' },
-    { field: 'professor', header: 'Professor' },
+    { field: 'id', header: 'ID', filter:false },
+    { field: 'nome', header: 'Nome', filter:false },
+    { field: 'descricao', header: 'Descrição', filter:true },
+    { field: 'professor', header: 'Professor', filter:false },
+    { field: 'area', header: 'area', filter:true },
 
   ];
 
@@ -31,6 +32,12 @@ export class ListProvaComponent implements OnInit {
   selectedCars3: any[];
 
 
+  
+  areasBusca = [
+    {label: "opção 1", value: "1"},
+    {label: "opção 2", value: "2"},
+    {label: "opção 3", value: "3"}
+  ];
   // cols = [
   //   { field: 'id', header: 'ID' },
   //   { field: 'nome', header: 'Nome' },
@@ -39,8 +46,8 @@ export class ListProvaComponent implements OnInit {
   // ];
 
   provas = [
-      { id: 1, nome: "sss", descricao: "aaa@hotmail.com", professor: "asasa"},
-      { id: 2, nome: "dfsd", descricao: "bbbbbb@hotmail.com", professor: "asasa" }
+      { id: 1, nome: "sss", descricao: "aaa@hotmail.com", professor: "asasa", area:"Aisre"},
+      { id: 2, nome: "dfsd", descricao: "bbbbbb@hotmail.com", professor: "asasa", area:"ss" }
     ]
 
   constructor() { }
@@ -50,12 +57,13 @@ export class ListProvaComponent implements OnInit {
     // console.log(this.professor)
   }
 
-  preencherTabela() {
+  preencherTabela(valor = null, campo = null, tipo= null) {
     // this.professor = [
     //   { id: 1, nome: "sss", email: "aaa@hotmail.com" },
     //   { id: 2, nome: "dfsd", email: "bbbbbb@hotmail.com" }
 
     // ]
+    console.log("aAAAA", valor, campo, tipo)
     this.pageResponse.content = this.provas
     this.pageResponse.totalElements = 2
     this.pageResponse.totalPages = 1

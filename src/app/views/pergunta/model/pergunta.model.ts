@@ -1,4 +1,5 @@
 import { Area } from '../../area/model/area.model';
+import { SelectItem } from 'primeng';
 
 export class Pergunta {
 
@@ -11,6 +12,6 @@ export class Pergunta {
     opcao2: string;
     opcao1: string;
 
-    opcaoCorreta: string;
+    opcaoCorreta: SelectItem;
     area: Area
 }

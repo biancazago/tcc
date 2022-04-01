@@ -10,7 +10,7 @@
                         <div class="display-flex">
                             <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
                                 <p-editor [readonly]="false" formControlName="descricao"
-                                    [(ngModel)]="pergunta.descricao" [style]="{'height':'320px'}">
+                                    [(ngModel)]="pergunta.descricao" [style]="{'height':'120px'}">
                                 </p-editor>
                             </div>
                         </div>
@@ -81,10 +81,12 @@
                             formulario.controls['opcao5'].dirty || formulario.controls['opcao5'].touched && !formulario.controls['opcao5'].valid"
                             text="Campo Obrigatório"></p-message>
 
+   
 
                         <div class="display-flex">
                             <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
-                                <p-dropdown [options]="opcoes" [virtualScroll]="true" itemSize="30"></p-dropdown>
+                                <p-dropdown  [ngModelOptions]="{standalone: true}" [options]="opcoes" [virtualScroll]="true" itemSize="30"></p-dropdown>
+                                <!-- <p-dropdown [options]="opcoes" [(ngModel)]="opcaoCorreta" optionLabel="name"></p-dropdown> -->
 
                             </div>
                         </div>
@@ -92,6 +94,19 @@
                             *ngIf="!formulario.controls['opcaoCorreta'].valid &&
                                 formulario.controls['opcaoCorreta'].dirty || formulario.controls['opcaoCorreta'].touched && !formulario.controls['opcaoCorreta'].valid"
                             text="Campo Obrigatório"></p-message>
+
+                            
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <p-multiSelect defaultLabel="Área" [options]="areas" formControlName="area" requerid [(ngModel)]="areasSeleciodas"  [ngModelOptions]="{standalone: true}" optionLabel="name"></p-multiSelect>
+
+                            </div>
+                            
+                        </div>
+                        <p-message severity="error"
+                        *ngIf="!formulario.controls['area'].valid &&
+                        formulario.controls['area'].dirty || formulario.controls['area'].touched && !formulario.controls['area'].valid"
+                        text="Campo Obrigatório"></p-message>
 
                     </div>
                 </div>

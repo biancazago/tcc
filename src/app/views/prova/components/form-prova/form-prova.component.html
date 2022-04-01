@@ -6,11 +6,10 @@
                     <div class="display-flex">
                         <span class="font-weight-bold">Nova Prova:</span>
                     </div>
-                    <div class="padding-left-2">
                         <div class="display-flex">
                             <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
-                                <input type="text" class="g-inputtext" [(ngModel)]="prova.nome"
-                                    formControlName="nome" required pInputText maxlength="100" />
+                                <input type="text" class="g-inputtext" [(ngModel)]="prova.nome" formControlName="nome"
+                                    required pInputText maxlength="100" />
                                 <label for="nome">Nome</label>
                             </div>
                         </div>
@@ -19,21 +18,34 @@
             formulario.controls['nome'].dirty || formulario.controls['nome'].touched && !formulario.controls['nome'].valid"
                             text="Campo Obrigatório"></p-message>
 
-                            <div class="display-flex">
-                                <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
-                                    <textarea pInputTextarea class="g-inputtext" [(ngModel)]="prova.descricao"
-                                        formControlName="descricao" maxlength="250" required></textarea>
-                                    <label for="descricao">Descrição</label>
-                                </div>
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <textarea pInputTextarea class="g-inputtext" [(ngModel)]="prova.descricao"
+                                    formControlName="descricao" maxlength="250" required></textarea>
+                                <label for="descricao">Descrição</label>
                             </div>
-                            <p-message severity="error"
-                                *ngIf="!formulario.controls['descricao'].valid &&
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['descricao'].valid &&
                     formulario.controls['descricao'].dirty || formulario.controls['descricao'].touched && !formulario.controls['descricao'].valid"
-                                text="Campo Obrigatório"></p-message>
-    
-                    </div>
+                            text="Campo Obrigatório"></p-message>
 
-                    <div class="ui-g-12 ui-md-12 ui-sm-12 padding-top-1">
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <p-multiSelect defaultLabel="Área" [options]="areas" formControlName="area" requerid
+                                    [(ngModel)]="areasSeleciodas" ></p-multiSelect>
+
+                            </div>
+
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['area'].valid &&
+                        formulario.controls['area'].dirty || formulario.controls['area'].touched && !formulario.controls['area'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+
+
+                    <div class="ui-g-12 ui-md-12 ui-sm-12 padding-top-3">
                         <!-- <p-dataView [value]="perguntas">
                             <ng-template pTemplate="header">Lista de Perguntas</ng-template>
 
@@ -46,41 +58,47 @@
 
                             </ng-template>
                         </p-dataView> -->
-                        <p-table [columns]="cols" [value]="pageResponse.content" [paginator]="true" [rows]="10" [lazy]="true"
-                (onPage)="preencherTabela()" emptyMessage="Nenhum registro encontrado"
-                [totalRecords]="pageResponse.totalElements" [(selection)]="selectedCars3" dataKey="vin">
-                <ng-template pTemplate="header" let-columns>
-                    <tr>
-                        <th style="width: 3em">
-                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-                        </th>
-                        <th *ngFor="let col of columns">
-                            {{col.header}}
-                        </th>
-                        
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rowData let-columns="columns">
-                    <tr>
 
-                        <td>
-                            <p-checkbox (click)="insereListaSelecionados(rowData.id)">
-                            </p-checkbox>
-                        </td>
-                        <td *ngFor="let col of columns">
-                            {{rowData[col.field]}}
-                        </td>
-                        
-                    </tr>
-                </ng-template>
-                <!-- <ng-template pTemplate="summary">
+                        <p-table [columns]="cols" [value]="pageResponse.content" [paginator]="true" [rows]="10"
+                            [lazy]="true" (onPage)="preencherTabela()" emptyMessage="Nenhum registro encontrado"
+                            [totalRecords]="pageResponse.totalElements" [(selection)]="selectedCars3" dataKey="vin">
+                            <ng-template pTemplate="header" let-columns>
+                                <tr>
+                                    <th style="width: 3em">
+                                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                    </th>
+                                    <th *ngFor="let col of columns">
+                                        {{col.header}}
+                                        <input *ngIf="col.filter && col.field != 'area'" pInputText type="text" (input)="preencherTabela($event.target.value, col.field, 'cotains')">
+                                        <p *ngIf="!col.filter"></p>
+                                        <p-multiSelect *ngIf="col.filter && col.field == 'area'" [options]="areasBusca" defaultLabel="Áreas" (onChange)="preencherTabela($event.value, col.field, 'in')"></p-multiSelect>
+
+                                    </th>
+
+                                </tr>
+                               
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                                <tr>
+
+                                    <td>
+                                        <p-checkbox (click)="insereListaSelecionados(rowData.id)">
+                                        </p-checkbox>
+                                    </td>
+                                    <td *ngFor="let col of columns">
+                                        {{rowData[col.field]}}
+                                    </td>
+
+                                </tr>
+                            </ng-template>
+                            <!-- <ng-template pTemplate="summary">
                     <ul>
                         <li *ngFor="let car of selectedCars3" style="text-align: left">
                             {{car.vin + ' - ' + car.brand + ' - ' + car.year + ' - ' + car.color}}
                         </li>
                     </ul>
                 </ng-template> -->
-            </p-table>
+                        </p-table>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,90 @@
+<form [formGroup]="formulario" (submit)="salvar(formulario)">
+    <div class="ui-g-8 ui-md-8 ui-sm-8">
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-12 ui-sm-12">
+                <div class="ui-g-12 ui-md-12 ui-sm-12">
+                    <div class="display-flex">
+                        <span class="font-weight-bold">Configurando Senha:</span>
+                    </div>
+                    
+                    <div class="padding-left-2">
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <input type="email" class="g-inputtext" [ngModelOptions]="{standalone: true}" [disabled]="true" [(ngModel)]="novaSenha.email"
+                                     pInputText maxlength="255" />
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                       
+
+                    </div>
+                    <div class="padding-left-2">
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <input type="password" class="g-inputtext" [(ngModel)]="novaSenha.senhaAtual"
+                                    formControlName="senhaAtual" required pInputText maxlength="100" />
+                                <label for="senhaAtual">Senha do Atual</label>
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['senhaAtual'].valid &&
+                formulario.controls['senhaAtual'].dirty || formulario.controls['senhaAtual'].touched && !formulario.controls['senhaAtual'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+
+                    </div>
+
+                    <div class="padding-left-2">
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <input type="password" class="g-inputtext" [(ngModel)]="novaSenha.senhaNova"
+                                    formControlName="senha" required pInputText maxlength="100" />
+                                <label for="senha">Nova Senha</label>
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['senha'].valid &&
+                formulario.controls['senha'].dirty || formulario.controls['senha'].touched && !formulario.controls['senha'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+
+                    </div>
+
+                    <div class="padding-left-2">
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <input type="password" class="g-inputtext" formControlName="senhaConfirmada" required
+                                    pInputText maxlength="100" />
+                                <label for="senhaConfirmada">Confirme sua senha</label>
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="formulario.controls['senhaConfirmada'].value != formulario.controls['senha'].value && !formulario.controls['senhaConfirmada'].valid &&
+                            formulario.controls['senhaConfirmada'].dirty || formulario.controls['senhaConfirmada'].touched && !formulario.controls['senhaConfirmada'].valid" 
+                            text="Senha devem ser iguais"></p-message>
+
+
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['senhaConfirmada'].valid &&
+                formulario.controls['senhaConfirmada'].dirty || formulario.controls['senhaConfirmada'].touched && !formulario.controls['senhaConfirmada'].valid"
+                            text="Campo Obrigatório"></p-message>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-g-12">
+                <hr>
+                <div class="padding-top-1 display-flex justify-content-end">
+                    
+                    <div class="padding-right-1">
+                        <p-button class="g-button  button-primary" type="submit" label="ALTERAR SENHA"
+                            [disabled]="!formulario.valid">
+                        </p-button>
+                    </div>
+                </div>
+            </div>
+        </p-footer>
+    </div>
+</form>

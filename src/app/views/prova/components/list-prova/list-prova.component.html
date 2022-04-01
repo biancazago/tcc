@@ -37,6 +37,10 @@
                     <tr>
                         <th *ngFor="let col of columns">
                             {{col.header}}
+                            <input *ngIf="col.filter && col.field != 'area'" pInputText type="text" (input)="preencherTabela($event.target.value, col.field, 'cotains')">
+                            <p *ngIf="!col.filter"></p>
+                            <p-multiSelect *ngIf="col.filter && col.field == 'area'" [options]="areasBusca" defaultLabel="Áreas" (onChange)="preencherTabela($event.value, col.field, 'in')"></p-multiSelect>
+
                         </th>
                         <th>
                             {{"Botões"}}
@@ -48,6 +52,7 @@
 
                         <td *ngFor="let col of columns">
                             {{rowData[col.field]}}
+
                         </td>
                         <td>
                             <div class="display-flex flex-wrap justify-content-end">

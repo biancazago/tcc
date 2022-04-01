@@ -15,8 +15,9 @@ import {TooltipModule} from 'primeng/tooltip';
 import {TabViewModule} from 'primeng/tabview';
 import { PerguntaService } from './service/pergunta.service';
 import { ListPerguntaComponent } from './components/list-pergunta/list-pergunta.component';
-import { ButtonModule, InputTextModule, CheckboxModule, DropdownModule, EditorModule, TableModule } from 'primeng';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonModule, InputTextModule, CheckboxModule, DropdownModule, EditorModule, TableModule, MultiSelectModule } from 'primeng';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       ListPerguntaComponent
   ],
   imports: [    
+    ReactiveFormsModule,
     CommonModule,
     FormsModule,
     DataViewModule,
@@ -47,6 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DataViewModule,
     InputSwitchModule,
     TableModule,
+    EditorModule,
+    MultiSelectModule,
 
   ],
   providers: [

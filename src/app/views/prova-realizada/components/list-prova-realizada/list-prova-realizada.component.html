@@ -12,6 +12,9 @@
                     <tr>
                         <th *ngFor="let col of columns">
                             {{col.header}}
+                            <input *ngIf="col.filter" pInputText type="text" (input)="preencherTabela($event.target.value, col.field, 'cotains')">
+                            <p *ngIf="!col.filter"></p>
+
                         </th>
                         <th>
                             {{"Botões"}}

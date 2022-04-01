@@ -12,7 +12,7 @@ import { ListProvaComponent } from './components/list-prova/list-prova.component
 
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
-import { ButtonModule, DropdownModule,InputTextModule, DataViewModule, InputSwitchModule, InputTextareaModule, ChipsModule, TooltipModule, PickList, PickListModule, TableModule, CheckboxModule } from 'primeng';
+import { ButtonModule, DropdownModule,InputTextModule, DataViewModule, InputSwitchModule, InputTextareaModule, ChipsModule, TooltipModule, PickList, PickListModule, TableModule, CheckboxModule, MultiSelectModule } from 'primeng';
 import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
@@ -43,6 +43,7 @@ import { BrowserModule } from '@angular/platform-browser';
     DataViewModule,
     InputSwitchModule,
     TableModule,
+    MultiSelectModule, 
   ],
   providers: [
     ProvaService,

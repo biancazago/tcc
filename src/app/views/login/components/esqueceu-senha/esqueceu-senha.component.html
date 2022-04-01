@@ -1,0 +1,46 @@
+<form [formGroup]="formulario" (submit)="enviar(formulario)">
+    <div class="ui-g-8 ui-md-8 ui-sm-8">
+        <div class="ui-g ui-fluid">
+            <div class="ui-g-12 ui-md-12 ui-sm-12">
+                <div class="ui-g-12 ui-md-12 ui-sm-12">
+                    <div class="display-flex">
+                        <span class="font-weight-bold">Login:</span>
+                    </div>
+                    
+                    <div class="padding-left-2">
+                        <div class="display-flex">
+                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
+                                <input type="email" class="g-inputtext" [(ngModel)]="esqueceuSenha.email"
+                                    formControlName="email" required pInputText maxlength="255" />
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <p-message severity="error"
+                            *ngIf="!formulario.controls['email'].valid &&
+                formulario.controls['email'].dirty || formulario.controls['email'].touched && !formulario.controls['email'].valid"
+                            text="Campo Obrigatório"></p-message>
+
+                        <div class="display-flex">
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <p-footer>
+            <div class="ui-g-12">
+                <hr>
+                <div class="padding-top-1 display-flex justify-content-end">
+                    
+                    <div class="padding-right-1">
+                        <p-button class="g-button  button-primary" type="submit" label="ENVIAR"
+                            [disabled]="!formulario.valid">
+                        </p-button>
+                    </div>
+                </div>
+            </div>
+        </p-footer>
+    </div>
+</form>

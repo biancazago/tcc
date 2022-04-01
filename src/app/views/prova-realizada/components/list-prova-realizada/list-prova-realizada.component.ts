@@ -18,11 +18,13 @@ export class ListProvaRealizadaComponent implements OnInit {
 
 
   cols = [
-    { field: 'id', header: 'ID' },
-    { field: 'idProva', header: 'ID da Prova' },
-    { field: 'nome', header: 'Nome' },
-    { field: 'aluno', header: 'Aluno' },
-    { field: 'professor', header: 'Professor' },
+    { field: 'id', header: 'ID', filter: false },
+    { field: 'idProva', header: 'ID da Prova', filter: false },
+    { field: 'nome', header: 'Nome', filter: false },
+    { field: 'aluno', header: 'Aluno', filter: false },
+    { field: 'professor', header: 'Professor', filter: true },
+    { field: 'data', header: 'Data', filter: true },
+    { field: 'pontuacao', header: 'Pontuação', filter: false },
 
   ];
 
@@ -41,8 +43,8 @@ export class ListProvaRealizadaComponent implements OnInit {
   // ];
 
   provas = [
-      { id: 1, idProva: 5, nome: "sss", aluno: "joão jose", professor: "Tião"},
-      { id: 2, idProva: 5, nome: "dfsd", aluno: "maria da silva", professor: "Tião" }
+      { id: 1, idProva: 5, nome: "sss", aluno: "joão jose", professor: "Tião", data: Date(), pontuacao: "80%"},
+      { id: 2, idProva: 5, nome: "dfsd", aluno: "maria da silva", professor: "Tião", data: Date(), pontuacao: "80%" }
     ]
 
   constructor() { }
@@ -52,12 +54,13 @@ export class ListProvaRealizadaComponent implements OnInit {
     // console.log(this.professor)
   }
 
-  preencherTabela() {
+  preencherTabela(valor = null, campo = null, tipo= null) {
     // this.professor = [
     //   { id: 1, nome: "sss", email: "aaa@hotmail.com" },
     //   { id: 2, nome: "dfsd", email: "bbbbbb@hotmail.com" }
 
     // ]
+    console.log("AAAAA", valor, campo, tipo)
     this.pageResponse.content = this.provas
     this.pageResponse.totalElements = 2
     this.pageResponse.totalPages = 1

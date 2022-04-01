@@ -4,6 +4,7 @@ import { Prova } from '../../model/prova.model';
 import { Pergunta } from '../../../pergunta/model/pergunta.model';
 import { SelectItem } from 'primeng';
 import { Page } from '../../../../shared/page';
+import { Area } from '../../../area/model/area.model';
 
 @Component({
   selector: 'app-form-prova',
@@ -16,20 +17,37 @@ export class FormProvaComponent implements OnInit {
 
   prova = new Prova()
 
+  
+  // areas: Object[];
+
+  
+  areas = [
+    {label: "opção 1", value: "opcao1"},
+    {label: "opção 2", value: "opcao2"},
+    {label: "opção 3", value: "opcao3"}
+];
+
+areasBusca = [
+  {label: "opção 1", value: "1"},
+  {label: "opção 2", value: "2"},
+  {label: "opção 3", value: "3"}
+];
+  areasSeleciodas: Object[];
 
   selectedCars3: any
 
   perguntas: any[] = [
-    { descricao: 'vin', id: 1 },
+    { descricao: 'vin', id: 1, professor: "João", area: 'tec'},
   ];
 
   public pageResponse: Page<Pergunta> = new Page();
 
   
   cols = [
-    { field: 'id', header: 'ID' },
-    { field: 'descricao', header: 'Descrição' },
-    { field: 'professor', header: 'Professor' },
+    { field: 'id', header: 'ID', filter:false },
+    { field: 'descricao', header: 'Descrição',  filter:true },
+    { field: 'professor', header: 'Professor',  filter:true },
+    { field: 'area', header: 'Área',  filter:true },
 
   ];
 
@@ -45,12 +63,13 @@ export class FormProvaComponent implements OnInit {
   }
 
   
-  preencherTabela() {
+  preencherTabela(valor = null, campo = null, tipo= null) {
     // this.professor = [
     //   { id: 1, nome: "sss", email: "aaa@hotmail.com" },
     //   { id: 2, nome: "dfsd", email: "bbbbbb@hotmail.com" }
 
     // ]
+    console.log("aAAAA", valor, campo, tipo, this.areas)
     this.pageResponse.content = this.perguntas
     this.pageResponse.totalElements = 2
     this.pageResponse.totalPages = 1
@@ -58,10 +77,11 @@ export class FormProvaComponent implements OnInit {
   }
 
   iniciarForm() {
-    
+       
     this.formulario = this.formBuilder.group({
       descricao: [null, [Validators.required]],
       nome: [null, [Validators.required]],
+      area:[null, [Validators.required]]
   }, { updateOn: "blur" });
     
   }

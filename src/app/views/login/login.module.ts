@@ -15,10 +15,16 @@ import {TabViewModule} from 'primeng/tabview';
 import { LoginComponent } from "./components/login/login.component";
 import { AlunoService } from './service/login.service';
 import { InputTextModule, CheckboxModule, DropdownModule, ButtonModule, TableModule } from 'primeng';
+import { EsqueceuSenhaComponent } from './components/esqueceu-senha/esqueceu-senha.component';
+import { NovaSenhaComponent } from './components/nova-senha/nova-senha.component';
 
 @NgModule({
   declarations: [
       LoginComponent,
+      EsqueceuSenhaComponent,
+      NovaSenhaComponent,
+
+
   ],
   imports: [
     CommonModule,
