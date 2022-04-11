@@ -1,9 +1,4 @@
 {
-  
-  "files": [
-    "main.ts",
-    "polyfills.ts"
-  ],
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",

@@ -1,22 +1,28 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutes } from './app.routes';
-import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './components/app/app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
+import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
+import { OpcaoMenuComponent } from './components/opcao-menu/opcao-menu.component';
+import { BoasVindasComponent } from './components/boas-vindas/boas-vindas.component';
+import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuLateralComponent,
+    OpcaoMenuComponent,
+    BoasVindasComponent
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    RouterModule.forRoot(AppRoutes),
+    AppRoutingModule,
+    SharedModule,
+    BlockUIModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

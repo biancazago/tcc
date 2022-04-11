@@ -1,0 +1,13 @@
+<block-ui message="Carregando..."></block-ui>
+<div class="cabecalho padding-1 align-items-center display-flex">
+  <div class="botao-menu padding-1 margin-right-1 pi pi-bars" (click)="exibirMenu = !exibirMenu"></div>
+  <h1 class="margin-0px display-block" routerLink="/">Projeto de TCC</h1>
+</div>
+<div class="corpo display-flex">
+  <app-menu-lateral *ngIf="exibirMenu" class="display-block menu-lateral" [opcoes]="opcoesMenuLateral"></app-menu-lateral>
+  <div class="conteudo flex-1 padding-1">
+    <p-card class="card">
+      <router-outlet></router-outlet>
+    </p-card>
+  </div>
+</div>

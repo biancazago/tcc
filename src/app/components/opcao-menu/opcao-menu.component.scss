@@ -1,0 +1,4 @@
+.container-opcao {
+  > * { padding: 8px; }
+  &:hover { background-color: #0002; }
+}
