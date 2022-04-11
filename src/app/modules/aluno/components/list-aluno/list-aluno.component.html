@@ -1,25 +1,24 @@
 <h1>Lista de alunos:</h1>
 <hr />
+<div class="display-flex justify-content-end padding-1">
+  <p-button icon="pi pi-plus" label="Novo"></p-button>
+</div>
 <p-table [columns]="colunas" [value]="pagina.content" [paginator]="true" [rows]="10" [lazy]="true"
   (onPage)="preencherTabela($event)" emptyMessage="Nenhum registro encontrado"
   [totalRecords]="pagina.totalElements">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of columns" [ngStyle]="{'width': col.tamanho}">{{ col.cabecalho }}</th>
-      <th style="width: 80px">Ações</th>
+      <th style="width: 120px">Ações</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
       <td *ngFor="let col of columns">{{ rowData[col.campo] }}</td>
       <td>
-        <div class="display-flex flex-wrap justify-content-end">
-          <span class="margin-x-1 ui-inputgroup-addon font-size-20px">
-            <i (click)="excluir(rowData.id)" class="pi pi-trash cursor-pointer"></i>
-          </span>
-          <span class="margin-x-1 ui-inputgroup-addon font-size-20px">
-            <i (click)="visualizar(rowData.id)" class="pi pi-eye cursor-pointer"></i>
-          </span>
+        <div class="display-flex justify-content-between">
+          <p-button icon="pi pi-trash" (click)="excluir(rowData.id)"></p-button>
+          <p-button icon="pi pi-eye" (click)="visualizar(rowData.id)"></p-button>
         </div>
       </td>
     </tr>

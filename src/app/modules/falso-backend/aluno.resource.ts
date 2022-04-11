@@ -18,6 +18,6 @@ export class AlunoResource {
   }
 
   private static simularTempoRespostaSegundos(multiplicador: number = 1): number {
-    return (Math.random() * 10) * multiplicador;
+    return ((Math.random() * 10) % 2) * multiplicador;
   }
 }

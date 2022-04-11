@@ -23,7 +23,7 @@ export class Page<T> {
     pagina.number = numeroPagina > 0 && numeroPagina < pagina.totalPages ? numeroPagina : 1;
     pagina.size = tamanhoPagina;
     pagina.totalElements = conteudo.length;
-    pagina.content = conteudo.slice(pagina.size * pagina.number, pagina.size);
+    pagina.content = conteudo.slice(pagina.size * (pagina.number - 1), pagina.size);
     pagina.first = pagina.number === 1;
     pagina.last = pagina.number === pagina.totalPages;
     pagina.numberOfElements = pagina.content.length;

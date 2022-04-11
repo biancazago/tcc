@@ -4,6 +4,7 @@ import { Page } from '../../../../models/page';
 import { ColunaModel } from 'src/app/shared/models/coluna.model';
 import { AlunoService } from '../../service/aluno.service';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list-aluno',
@@ -41,8 +42,10 @@ export class ListAlunoComponent implements OnInit {
   private buscarAlunos(): void {
     this.blockUI.start();
     this.alunoService.mockObterTodos().subscribe((alunos: AlunoModel[]) => {
+      this.blockUI.stop();
       this.alunos = alunos;
       this.pagina = Page.paginar(this.alunos, 1);
-    }, () => {}, () => this.blockUI.stop());
+      console.log(this.pagina);
+    });
   }
 }
