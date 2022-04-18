@@ -1,7 +1,7 @@
 import {
-  ButtonModule, CardModule, CheckboxModule, ChipsModule, DataViewModule, DropdownModule,
+  ButtonModule, CardModule, CheckboxModule, ChipsModule, DataViewModule, DialogModule, DropdownModule,
   InputSwitchModule, InputTextareaModule, InputTextModule, MessageModule, MessagesModule,
-  TableModule, TooltipModule
+  TableModule, ToastModule, TooltipModule
 } from "primeng";
 
 export const PRIMENG_IMPORTS: any = [
@@ -23,4 +23,6 @@ export const PRIMENG_IMPORTS: any = [
   DataViewModule,
   InputSwitchModule,
   TableModule,
+  DialogModule,
+  ToastModule
 ];

@@ -1,6 +1,6 @@
 <div class="display-flex container-opcao">
   <div class="icone {{ opcao.icon }}" [routerLink]="opcao.routerLink"></div>
-  <div class="texto" [routerLink]="opcao.routerLink">{{ opcao.label }}</div>
+  <div class="texto flex-1" [routerLink]="opcao.routerLink">{{ opcao.label }}</div>
   <div class="" *ngIf="haSubOpcoes(opcao.items)">
     <span (click)="exibirSubMenu = !exibirSubMenu">{{ exibirSubMenu ? '▼' : '▶' }}</span>
     <ng-container *ngIf="exibirSubMenu">

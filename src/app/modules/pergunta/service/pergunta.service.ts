@@ -1,34 +1,37 @@
-import { Pergunta } from '../model/pergunta.model';
-import { environment } from '../../../../environments/environment';
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
+import { PerguntaModel } from "../model/pergunta.model";
+import { PerguntaMock } from "./pergunta-mock";
+
 
 @Injectable()
 export class PerguntaService {
+  // TODO: remover chamadas mockadas ao falso back-end
+  public mock: PerguntaMock = PerguntaMock.obterInstancia();
+  serviceUrl = environment.apiServiceUrl + "/pergunta";
 
-    serviceUrl = "/pergunta" //environment.apiServiceUrl + "/pergunta";
+  constructor(private http: HttpClient) { }
 
-    constructor(private http: HttpClient) { }
+  salvar(radar: PerguntaModel): Observable<any> {
+    return this.http.post(this.serviceUrl, radar);
+  }
 
-    salvar(radar: Pergunta): Observable<any> {
-        return this.http.post(this.serviceUrl, radar);
-    }
+  excluir(ids: number[]): Observable<any> {
+    return this.http.delete(this.serviceUrl + "/" + ids);
+  }
 
-    excluir(ids: number[]): Observable<any> {
-        return this.http.delete(this.serviceUrl + "/" + ids);
-    }
+  obterPorId(id: number): Observable<any> {
+    return this.http.get(`${this.serviceUrl}/${id}`);
+  }
 
-    obterPorId(id: number): Observable<any> {
-        return this.http.get(`${this.serviceUrl}/${id}`);
-    }
+  converterItemFromServer(json: any): PerguntaModel {
+    const radar: PerguntaModel = Object.assign(new PerguntaModel(), json);
+    return radar;
+  }
 
-    converterItemFromServer(json: any): Pergunta {
-        const radar: Pergunta = Object.assign(new Pergunta(), json);
-        return radar;
-    }
-
-    obterTodos(): Observable<any> {
-        return this.http.get(this.serviceUrl + '/listar/');
-    }
+  obterTodos(): Observable<any> {
+    return this.http.get(this.serviceUrl + '/listar/');
+  }
 }

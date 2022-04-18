@@ -1,12 +1,13 @@
-export enum RouteNames {
-  LOGIN = 'login',
-  PROVA = 'prova',
-  PERGUNTA = 'pergunta',
-  PROFESSOR = 'professor',
-  AREA = 'area',
-  ALUNO = 'aluno',
-  REALIZAR_PROVA = 'realizar-prova',
-  PROVA_REALIZADA = 'prova-realizada'
+export class RouteNames {
+  public static readonly LOGIN: string = 'login';
+  public static readonly PROVAS: string = 'provas';
+  public static readonly PERGUNTAS: string = 'perguntas';
+  public static readonly PROFESSORES: string = 'professores';
+  public static readonly AREAS: string = 'areas';
+  public static readonly ALUNOS: string = 'alunos';
+  public static readonly REALIZAR_PROVA: string = 'realizar-prova';
+  public static readonly PROVAS_REALIZADAS: string = 'provas-realizadas';
+  public static readonly NOVO: string = 'novo';
 }
 
 export class RouteUtils {

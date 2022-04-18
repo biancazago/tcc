@@ -1,4 +1,14 @@
 .container-opcao {
+  .icone {
+    font-size: 24px;
+    font-weight: 100;
+  }
+
+  .texto {
+    display: flex;
+    align-items: center;
+  }
+
   > * { padding: 8px; }
   &:hover { background-color: #0002; }
 }

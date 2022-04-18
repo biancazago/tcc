@@ -1,0 +1,6 @@
+<div class="display-flex flex-wrap" *ngIf="!!obterCampo()">
+  <div class="mensagem-erro" *ngIf="ehCampoInvalido() && obrigatorioPadrao">{{ mensagemObrigatorioPadrao }}</div>
+  <ng-container *ngFor="let mensagem of mensagensValidacao">
+    <div class="mensagem-erro" *ngIf="mensagem.ehCampoInvalido(obterCampo())">{{ mensagem.aviso }}</div>
+  </ng-container>
+</div>

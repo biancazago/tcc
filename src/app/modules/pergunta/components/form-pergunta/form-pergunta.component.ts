@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Pergunta } from '../../model/pergunta.model';
+import { PerguntaModel } from '../../model/pergunta.model';
 import { SelectItem } from 'primeng';
 import { Area } from '../../../area/model/area.model';
 
@@ -13,13 +13,13 @@ export class FormPerguntaComponent implements OnInit {
 
   formulario: FormGroup
 
-  pergunta = new Pergunta()
+  pergunta = new PerguntaModel()
 
-  
+
   cities: City[];
 
   selectedCities: City[];
-  
+
 
   areas: City[];
 

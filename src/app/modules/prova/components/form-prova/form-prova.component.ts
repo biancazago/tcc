@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Prova } from '../../model/prova.model';
-import { Pergunta } from '../../../pergunta/model/pergunta.model';
+import { PerguntaModel } from '../../../pergunta/model/pergunta.model';
 import { SelectItem } from 'primeng';
 import { Page } from '../../../../models/page';
 import { Area } from '../../../area/model/area.model';
@@ -40,7 +40,7 @@ areasBusca = [
     { descricao: 'vin', id: 1, professor: "João", area: 'tec'},
   ];
 
-  public pageResponse: Page<Pergunta> = new Page();
+  public pageResponse: Page<PerguntaModel> = new Page();
 
 
   cols = [

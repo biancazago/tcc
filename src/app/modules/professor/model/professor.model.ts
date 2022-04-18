@@ -1,8 +1,7 @@
-export class Professor {
-
-    id: number;
-    nome: String;
-    email: String;
-
-
+export class ProfessorModel {
+  constructor(
+    public id?: number,
+    public nome?: String,
+    public email?: String
+  ) {}
 }

@@ -10,6 +10,6 @@ import { RouteNames, RouteUtils } from 'src/app/shared/util/route-names';
 })
 export class MenuLateralComponent {
   @Input() opcoes: MenuItem[] = [
-    PrimengUtil.criarMenuItem('Aluno', RouteUtils.formarRota([RouteNames.ALUNO], true), 'pi pi-user')
+    PrimengUtil.criarMenuItem('Aluno', RouteUtils.formarRota([RouteNames.ALUNOS], true), 'pi pi-user')
   ];
 }

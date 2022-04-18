@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Pergunta } from '../../model/pergunta.model';
+import { PerguntaModel } from '../../model/pergunta.model';
 import { Page } from '../../../../models/page';
 
 @Component({
@@ -11,7 +11,7 @@ import { Page } from '../../../../models/page';
 export class ListPerguntaComponent implements OnInit {
 
 
-  public pageResponse: Page<Pergunta> = new Page();
+  public pageResponse: Page<PerguntaModel> = new Page();
 
   cols = [
     { field: 'id', header: 'ID' },

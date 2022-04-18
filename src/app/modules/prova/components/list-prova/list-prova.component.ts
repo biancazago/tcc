@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/cor
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Prova } from '../../model/prova.model';
 import { Page } from '../../../../models/page';
-import { Professor } from '../../../professor/model/professor.model';
+import { ProfessorModel } from '../../../professor/model/professor.model';
 
 @Component({
   selector: 'app-list-prova',
