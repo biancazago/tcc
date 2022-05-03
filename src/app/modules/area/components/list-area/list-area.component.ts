@@ -1,7 +1,12 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Area } from '../../model/area.model';
+import { Component, OnInit } from '@angular/core';
+import { AreaModel } from '../../model/area.model';
 import { Page } from '../../../../models/page';
+import { ColunaModel } from 'src/app/shared/models/coluna.model';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
+import { AreaService } from '../../service/area.service';
+import { MessageService } from 'primeng';
+import { PrimengUtil } from 'src/app/shared/util/primeng.util';
+import { MensagemUtil } from 'src/app/shared/util/mensagem.util';
 
 @Component({
   selector: 'app-list-area',
@@ -9,50 +14,56 @@ import { Page } from '../../../../models/page';
   styleUrls: ['./list-area.component.sass']
 })
 export class ListAreaComponent implements OnInit {
-
-  area = []
-  public pageResponse: Page<Area> = new Page();
-
-
-  cols = [
-    { field: 'id', header: 'ID' },
-    { field: 'nome', header: 'Nome' },
-
+  public areas: AreaModel[] = [];
+  public pagina: Page<AreaModel> = new Page();
+  public colunas: ColunaModel[] = [
+    new ColunaModel('id', 'ID', '64px'),
+    new ColunaModel('nome', 'Nome', '150px'),
+    new ColunaModel('descricao', 'Descrição', 'auto'),
   ];
+  public areaEditada: AreaModel;
+  public mostrarModal: boolean = false;
+  @BlockUI() private blockUI: NgBlockUI;
 
-  areas = [
-      { id: 1, nome: "sss" },
-      { id: 2, nome: "dfsd" }
-    ]
+  constructor(
+    private areaService: AreaService,
+    private messageService: MessageService
+  ) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.preencherTabela();
-    // console.log(this.professor)
+  public ngOnInit(): void {
+    this.buscarAreas();
   }
 
-  preencherTabela() {
-    // this.professor = [
-    //   { id: 1, nome: "sss", email: "aaa@hotmail.com" },
-    //   { id: 2, nome: "dfsd", email: "bbbbbb@hotmail.com" }
-
-    // ]
-    this.pageResponse.content = this.areas
-    this.pageResponse.totalElements = 2
-    this.pageResponse.totalPages = 1
-
+  public preencherTabela(evento: Record<string, any>): void {
+    this.pagina = Page.paginar(this.areas, Page.paginaPorIndice(evento.first));
   }
 
-  editar(id) {
-
+  public excluir(id: number) {
+    PrimengUtil.operarBlockUI(this.blockUI, this.areaService.mock.excluir([id])).subscribe(() => {
+      PrimengUtil.mensagemSucesso(this.messageService, MensagemUtil.SUCESSO_EXCLUSAO, '')
+      this.buscarAreas();
+    });
   }
 
-  excluir(id) {
-
+  public editar(id: number) {
+    this.areaEditada = this.areas.find((areaProcurada: AreaModel) => areaProcurada.id === id);
+    this.mostrarModal = true;
   }
 
-  visualizar(id) {
+  public finalizarAlteracao(area: AreaModel): void {
+    if(area) {
+      PrimengUtil.operarBlockUI(this.blockUI, this.areaService.mock.salvar(area)).subscribe(() => {
+        this.buscarAreas();
+      });
+    }
+    this.areaEditada = null;
+    this.mostrarModal = false;
+  }
 
+  private buscarAreas(): void {
+    PrimengUtil.operarBlockUI(this.blockUI, this.areaService.mock.obterTodos()).subscribe((areas: AreaModel[]) => {
+      this.areas = areas;
+      this.pagina = Page.paginar(this.areas, 1);
+    });
   }
 }

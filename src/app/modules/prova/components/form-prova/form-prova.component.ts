@@ -4,7 +4,7 @@ import { Prova } from '../../model/prova.model';
 import { PerguntaModel } from '../../../pergunta/model/pergunta.model';
 import { SelectItem } from 'primeng';
 import { Page } from '../../../../models/page';
-import { Area } from '../../../area/model/area.model';
+import { AreaModel } from '../../../area/model/area.model';
 
 @Component({
   selector: 'app-form-prova',

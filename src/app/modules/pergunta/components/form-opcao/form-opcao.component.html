@@ -1,0 +1,6 @@
+<form [formGroup]="formulario">
+  <input pInputText class="width-100 margin-bottom-2" formControlName="texto">
+  <div class="width-100 display-flex justify-content-end">
+    <p-button icon="pi {{ edicao ? 'pi-check' : 'pi-plus' }}" [label]="edicao ? 'Salvar' : 'Adicionar'" (click)="salvar()"></p-button>
+  </div>
+</form>

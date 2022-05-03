@@ -1,14 +1,11 @@
-import { FuncoesUtil } from "./funcoes.util";
+import { TiposUtil } from "src/app/shared/tipos.util";
+import { Identificavel } from "src/app/shared/util/identificavel";
 
-interface Identificavel {
-  id?: number;
-}
-
-export class CrudResource<T extends Identificavel> {
+export class CrudService<T extends Identificavel> {
   protected dados: T[];
   protected sequenceId: number;
 
-  protected constructor(dadosIniciais: T[] = [], sequenceId: number = 0) {
+  constructor(dadosIniciais: T[] = [], sequenceId: number = 1) {
     this.dados = dadosIniciais ? dadosIniciais : [];
     this.sequenceId = sequenceId;
   }
@@ -17,11 +14,11 @@ export class CrudResource<T extends Identificavel> {
     return this.sequenceId++;
   }
 
-  protected obterTodos(): T[] {
+  public obterTodos(): T[] {
     return this.dados;
   }
 
-  protected obterPorId(id: number): T {
+  public obterPorId(id: number): T {
     let resultado: T = this.dados.find((dado: T) => dado.id === id);
     if(!resultado) {
       throw new Error(this.gerarMensagemIdsNaoEncontrados([id]));
@@ -29,15 +26,15 @@ export class CrudResource<T extends Identificavel> {
     return resultado;
   }
 
-  protected inserir(dado: T): T {
+  public inserir(dado: T): T {
     let id: number = this.gerarSequenceId();
     dado.id = id;
     this.dados.push(dado);
     return this.obterPorId(id);
   }
 
-  protected alterar(dado: T): T {
-    if(FuncoesUtil.isNumber(dado.id)) {
+  public alterar(dado: T): T {
+    if(TiposUtil.isNumber(dado.id)) {
       let posicao: number = this.dados.findIndex((dadoSalvo: T) => dadoSalvo.id === dado.id);
       this.dados[posicao] = (posicao > -1) ? dado : this.dados[posicao];
       return (posicao > -1) ? this.obterPorId(dado.id) : this.inserir(dado);
@@ -45,7 +42,7 @@ export class CrudResource<T extends Identificavel> {
     throw new Error(`Não é possível alterar um registro sem ID.`);
   }
 
-  protected excluir(ids: number[]): void {
+  public excluir(ids: number[]): void {
     let idsNaoEncontrados: number[] = [];
     ids.forEach((id: number) => {
       let posicao: number = this.dados.findIndex((dado: T) => dado.id === id);

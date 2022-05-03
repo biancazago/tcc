@@ -195,23 +195,23 @@ html, body {
     margin-right: auto;
 }
 
-.margin-botton-1 {
+.margin-bottom-1 {
     margin-bottom: $space-1;
 }
 
-.margin-botton-2 {
+.margin-bottom-2 {
     margin-bottom: $space-2;
 }
 
-.margin-botton-3 {
+.margin-bottom-3 {
     margin-bottom: $space-3;
 }
 
-.margin-botton-4 {
+.margin-bottom-4 {
     margin-bottom: $space-4;
 }
 
-.margin-botton-5 {
+.margin-bottom-5 {
     margin-bottom: $space-5;
 }
 
@@ -403,6 +403,18 @@ html, body {
 
 .display-flex {
     display: flex;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-inline {
+    display: inline;
+}
+
+.display-inline-block {
+    display: inline-block;
 }
 
 .flex-wrap {

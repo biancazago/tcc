@@ -12,7 +12,7 @@ export class ResponseUtil {
   }
 
   private static simularTempoRespostaSegundos(multiplicador: number = 1): number {
-    return ((Math.random() * 10) % 2) * multiplicador;
+    return ((Math.random() * 10) % 1) * multiplicador;
   }
 
   private static finalizarResposta<T>(assunto: Subject<T>, resposta?: T, erro?: Record<string, any>): void {

@@ -32,8 +32,8 @@
 </ng-template>
 </p-table>
 
-<p-dialog [header]="professorEditado ? 'Editar Professor' : 'Adicionar Professor'" [closable]="false" [draggable]="false" [(visible)]="mostrarModal" *ngIf="mostrarModal">
-  <app-form-professor [modal]="true" [professor]="professorEditado" (aoFinalizar)="finalizarAlteracao($event)"></app-form-professor>
+<p-dialog [header]="professorEditado ? 'Editar Professor' : 'Adicionar Professor'" [closable]="false" [draggable]="false" [(visible)]="mostrarModal">
+  <app-form-professor *ngIf="mostrarModal" [modal]="true" [professor]="professorEditado" (aoFinalizar)="finalizarAlteracao($event)"></app-form-professor>
 </p-dialog>
 
 <p-toast></p-toast>

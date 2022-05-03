@@ -33,6 +33,14 @@ export class PrimengUtil {
     };
   }
 
+  public static converterParaSelectItem(objeto: Record<string, any>, campoLabel: string, campoValue?: string): SelectItem {
+    return this.criarSelectItem(objeto[campoLabel], campoValue ? objeto[campoValue] : objeto);
+  }
+
+  public static converterVetorParaSelectItem(objetos: Record<string, any>[], campoLabel: string, campoValue?: string): SelectItem[] {
+    return objetos.map((objeto: Record<string, any>) => this.converterParaSelectItem(objeto, campoLabel, campoValue));
+  }
+
   public static mensagemSucesso(messageService: MessageService, titulo: string, detalhes: string): void {
     this.adicionarMensagem(messageService, this.criarMessage(this.SEVERIDADE_SUCESSO, titulo, detalhes));
   }

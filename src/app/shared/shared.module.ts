@@ -4,7 +4,6 @@ import { ANGULAR_IMPORTS } from './imports/angular-imports';
 import { MessageService } from 'primeng';
 import { AutenticacaoService } from './services/autenticacao.service';
 import { ErrosFormularioComponent } from './components/erros-formulario/erros-formulario.component';
-import { FormControlDirective, FormGroupDirective } from '@angular/forms';
 
 const MODULE_DECLARATIONS: any[] = [
   ErrosFormularioComponent

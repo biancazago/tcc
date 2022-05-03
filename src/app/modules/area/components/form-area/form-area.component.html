@@ -1,58 +1,27 @@
-<form [formGroup]="formulario" (submit)="salvar(formulario)">
-    <div class="ui-g-8 ui-md-8 ui-sm-8">
-
-        <div class="ui-g ui-fluid">
-            <div class="ui-g-12 ui-md-12 ui-sm-12">
-                <div class="ui-g-12 ui-md-12 ui-sm-12">
-                    <div class="display-flex">
-                        <span class="font-weight-bold">Nova Area:</span>
-                    </div>
-                    <div class="padding-left-2">
-                        <div class="display-flex">
-                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
-                                <input type="text" class="g-inputtext" [(ngModel)]="area.nome" formControlName="nome"
-                                    required pInputText maxlength="100" />
-                                <label for="nome">Nome do Area</label>
-                            </div>
-                        </div>
-                        <p-message severity="error"
-                            *ngIf="!formulario.controls['nome'].valid &&
-                formulario.controls['nome'].dirty || formulario.controls['nome'].touched && !formulario.controls['nome'].valid"
-                            text="Campo Obrigatório"></p-message>
-
-                        <div class="display-flex">
-                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
-                                <textarea pInputTextarea class="g-inputtext" [(ngModel)]="area.descricao"
-                                    formControlName="descricao" maxlength="250" required></textarea>
-                                <label for="descricao">Descrição</label>
-                            </div>
-                        </div>
-                        <p-message severity="error"
-                            *ngIf="!formulario.controls['descricao'].valid &&
-                formulario.controls['descricao'].dirty || formulario.controls['descricao'].touched && !formulario.controls['descricao'].valid"
-                            text="Campo Obrigatório"></p-message>
-                    </div>
-
-
-                    <div class="ui-g-12 ui-md-12 ui-sm-12"></div>
-                </div>
-            </div>
-        </div>
-        <p-footer>
-            <div class="ui-g-12">
-                <hr>
-                <div class="padding-top-1 display-flex justify-content-end">
-                    <div class="padding-right-1">
-                        <p-button class="g-button  button-cancelar margin-left-3" (click)="voltar()" label="CANCELAR">
-                        </p-button>
-                    </div>
-                    <div class="padding-right-1">
-                        <p-button class="g-button  button-primary" type="submit" label="SALVAR"
-                            [disabled]="!formulario.valid">
-                        </p-button>
-                    </div>
-                </div>
-            </div>
-        </p-footer>
+<ng-container *ngIf="!modal">
+  <h1 class="margin-0">{{ ehModoEdicao() ? 'Alterar' : 'Adicionar' }} Área</h1>
+  <hr />
+</ng-container>
+<form [formGroup]="formulario">
+  <div class="ui-g margin-top-4">
+    <div class="ui-sm-12 ui-md-6 ui-lg-6 ui-xl-6">
+      <div class="ui-float-label">
+        <input class="width-100" type="text" formControlName="nome" pInputText />
+        <label>Nome</label>
+      </div>
+      <app-erros-formulario nomeDoCampo="nome"></app-erros-formulario>
     </div>
+    <div class="ui-sm-12 ui-md-6 ui-lg-6 ui-xl-6">
+      <div class="ui-float-label">
+        <input class="width-100" type="text" formControlName="descricao" pInputText />
+        <label>Descrição</label>
+      </div>
+      <app-erros-formulario nomeDoCampo="nome"></app-erros-formulario>
+    </div>
+    <div class="ui-g-12 display-flex justify-content-end">
+      <p-button icon="pi pi-angle-left" label="Voltar" class="margin-right-2" (onClick)="voltar()"></p-button>
+      <p-button icon="pi pi-plus" label="Salvar" (onClick)="salvar()"></p-button>
+    </div>
+  </div>
 </form>
+<p-toast></p-toast>

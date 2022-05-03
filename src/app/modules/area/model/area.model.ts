@@ -1,8 +1,7 @@
-export class Area {
-
-    id: number;
-    nome: String;
-    descricao: String;
-
-
+export class AreaModel {
+  constructor(
+    public id?: number,
+    public nome?: String,
+    public descricao?: String
+  ) {}
 }

@@ -29,11 +29,11 @@
     <tr>
       <td [attr.colspan]="columns.length + 1">Nenhum aluno registrado.</td>
     </tr>
-</ng-template>
+  </ng-template>
 </p-table>
 
-<p-dialog [header]="alunoEditado ? 'Editar Aluno' : 'Adicionar Aluno'" [closable]="false" [draggable]="false" [(visible)]="mostrarModal" *ngIf="mostrarModal">
-  <app-form-aluno [modal]="true" [aluno]="alunoEditado" (aoFinalizar)="finalizarAlteracao($event)"></app-form-aluno>
+<p-dialog [modal]="true" [header]="alunoEditado ? 'Editar Aluno' : 'Adicionar Área'" [closable]="false" [draggable]="false" [(visible)]="mostrarModal">
+  <app-form-aluno *ngIf="mostrarModal" [modal]="true" [aluno]="alunoEditado" (aoFinalizar)="finalizarAlteracao($event)"></app-form-aluno>
 </p-dialog>
 
 <p-toast></p-toast>

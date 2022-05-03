@@ -18,8 +18,8 @@ export class PerguntaMock {
     return this.resource.listar();
   }
 
-  public salvar(aluno: PerguntaModel): Observable<PerguntaModel> {
-    return this.resource.salvar(aluno);
+  public salvar(pergunta: PerguntaModel): Observable<PerguntaModel> {
+    return this.resource.salvar(pergunta);
   }
 
   public excluir(ids: number[]): Observable<void> {

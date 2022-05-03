@@ -1,7 +1,12 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { PerguntaModel } from '../../model/pergunta.model';
-import { Page } from '../../../../models/page';
+import { Component, OnInit } from "@angular/core";
+import { BlockUI, NgBlockUI } from "ng-block-ui";
+import { MessageService } from "primeng";
+import { Page } from "src/app/models/page";
+import { ColunaModel } from "src/app/shared/models/coluna.model";
+import { MensagemUtil } from "src/app/shared/util/mensagem.util";
+import { PrimengUtil } from "src/app/shared/util/primeng.util";
+import { PerguntaModel } from "../../model/pergunta.model";
+import { PerguntaService } from "../../service/pergunta.service";
 
 @Component({
   selector: 'app-list-pergunta',
@@ -9,53 +14,55 @@ import { Page } from '../../../../models/page';
   styleUrls: ['./list-pergunta.component.sass']
 })
 export class ListPerguntaComponent implements OnInit {
-
-
-  public pageResponse: Page<PerguntaModel> = new Page();
-
-  cols = [
-    { field: 'id', header: 'ID' },
-    { field: 'nome', header: 'Nome' },
-    { field: 'descricao', header: 'Descrição' },
-    { field: 'professor', header: 'Professor' },
-
+  public perguntas: PerguntaModel[] = [];
+  public pagina: Page<PerguntaModel> = new Page();
+  public colunas: ColunaModel[] = [
+    new ColunaModel('id', 'ID', '64px'),
+    new ColunaModel('descricao', 'Descrição', 'auto'),
   ];
+  public perguntaEditada: PerguntaModel;
+  public mostrarModal: boolean = false;
+  @BlockUI() private blockUI: NgBlockUI;
 
-  perguntas = [
-      { id: 1, nome: "sss", descricao: "xxxxxxxxx xsssx", professor: "asasa"},
-      { id: 2, nome: "dfsd", descricao: "sdadasdsd rerrtrt", professor: "asasa" }
-    ]
+  constructor(
+    private perguntaService: PerguntaService,
+    private messageService: MessageService
+  ) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.preencherTabela();
-    // console.log(this.professor)
+  public ngOnInit(): void {
+    this.buscarPerguntas();
   }
 
-  preencherTabela() {
-    // this.professor = [
-    //   { id: 1, nome: "sss", email: "aaa@hotmail.com" },
-    //   { id: 2, nome: "dfsd", email: "bbbbbb@hotmail.com" }
-
-    // ]
-    // this.pageResponse.content = this.perguntas
-    // this.pageResponse.totalElements = 2
-    // this.pageResponse.totalPages = 1
-
+  public preencherTabela(evento: Record<string, any>): void {
+    this.pagina = Page.paginar(this.perguntas, Page.paginaPorIndice(evento.first));
   }
 
-
-  editar(id) {
-
+  public excluir(id: number) {
+    PrimengUtil.operarBlockUI(this.blockUI, this.perguntaService.mock.excluir([id])).subscribe(() => {
+      PrimengUtil.mensagemSucesso(this.messageService, MensagemUtil.SUCESSO_EXCLUSAO, '')
+      this.buscarPerguntas();
+    });
   }
 
-  excluir(id) {
-
+  public editar(id: number) {
+    this.perguntaEditada = this.perguntas.find((perguntaProcurada: PerguntaModel) => perguntaProcurada.id === id);
+    this.mostrarModal = true;
   }
 
-  visualizar(id) {
-
+  public finalizarAlteracao(pergunta: PerguntaModel): void {
+    if(pergunta) {
+      PrimengUtil.operarBlockUI(this.blockUI, this.perguntaService.mock.salvar(pergunta)).subscribe(() => {
+        this.buscarPerguntas();
+      });
+    }
+    this.perguntaEditada = null;
+    this.mostrarModal = false;
   }
 
+  private buscarPerguntas(): void {
+    PrimengUtil.operarBlockUI(this.blockUI, this.perguntaService.mock.obterTodos()).subscribe((perguntas: PerguntaModel[]) => {
+      this.perguntas = perguntas;
+      this.pagina = Page.paginar(this.perguntas, 1);
+    });
+  }
 }

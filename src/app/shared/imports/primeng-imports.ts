@@ -1,6 +1,7 @@
 import {
   ButtonModule, CardModule, CheckboxModule, ChipsModule, DataViewModule, DialogModule, DropdownModule,
   InputSwitchModule, InputTextareaModule, InputTextModule, MessageModule, MessagesModule,
+  MultiSelectModule,
   TableModule, ToastModule, TooltipModule
 } from "primeng";
 
@@ -24,5 +25,6 @@ export const PRIMENG_IMPORTS: any = [
   InputSwitchModule,
   TableModule,
   DialogModule,
-  ToastModule
+  ToastModule,
+  MultiSelectModule
 ];

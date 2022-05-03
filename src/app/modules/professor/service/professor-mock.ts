@@ -18,8 +18,8 @@ export class ProfessorMock {
     return this.resource.listar();
   }
 
-  public salvar(aluno: ProfessorModel): Observable<ProfessorModel> {
-    return this.resource.salvar(aluno);
+  public salvar(professor: ProfessorModel): Observable<ProfessorModel> {
+    return this.resource.salvar(professor);
   }
 
   public excluir(ids: number[]): Observable<void> {

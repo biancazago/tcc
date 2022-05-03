@@ -1,11 +1,12 @@
 import { Observable } from "rxjs";
-import { CrudResource } from "src/app/shared/util/crud.resource";
-import { FuncoesUtil } from "src/app/shared/util/funcoes.util";
+import { TiposUtil } from "src/app/shared/tipos.util";
 import { ProfessorModel } from "../../professor/model/professor.model";
+import { CrudService } from "../services/crud.service";
 import { ResponseUtil } from "../shared/response.util";
 
-export class ProfessorResource extends CrudResource<ProfessorModel> {
+export class ProfessorResource {
   private static instancia: ProfessorResource;
+  private service: CrudService<ProfessorModel>;
 
   public static obterInstancia(): ProfessorResource {
     return !!this.instancia ? this.instancia : this.instanciar();
@@ -13,29 +14,33 @@ export class ProfessorResource extends CrudResource<ProfessorModel> {
 
   public obter(id: number): Observable<ProfessorModel> {
     try {
-      return ResponseUtil.responder(this.obterPorId(id));
+      return ResponseUtil.responder(this.service.obterPorId(id));
     } catch(erro) {
       return ResponseUtil.responder(null, {message: erro})
     }
   }
 
   public listar(): Observable<ProfessorModel[]> {
-    return ResponseUtil.responder(this.dados);
+    return ResponseUtil.responder(this.service.obterTodos());
   }
 
   public salvar(professor: ProfessorModel): Observable<ProfessorModel> {
-    return ResponseUtil.responder(FuncoesUtil.isNumber(professor.id) ? this.alterar(professor) : this.inserir(professor));
+    return ResponseUtil.responder(TiposUtil.isNumber(professor.id) ? this.service.alterar(professor) : this.service.inserir(professor));
   }
 
   public remover(ids: number[]): Observable<void> {
-    this.excluir(ids);
+    this.service.excluir(ids);
     return ResponseUtil.responder();
   }
 
+  public obterService(): CrudService<ProfessorModel> {
+    return this.service;
+  }
+
   private constructor() {
-    super();
-    this.inserir(new ProfessorModel(null, 'Julio Vendramini', 'reguaNOquadro@hotmail.com'));
-    this.inserir(new ProfessorModel(null, 'Vanderson', 'vandergod@protonmail.com'));
+    this.service = new CrudService();
+    this.service.inserir(new ProfessorModel(null, 'Julio Vendramini', 'reguaNOquadro@hotmail.com'));
+    this.service.inserir(new ProfessorModel(null, 'Vanderson', 'vandergod@protonmail.com'));
   }
 
   private static instanciar(): ProfessorResource {
