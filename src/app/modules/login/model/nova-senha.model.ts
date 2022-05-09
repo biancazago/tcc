@@ -1,7 +1,7 @@
-export class NovaSenha {
-
-    id: number;
-    email: String;
-    senhaAtual: String;
-    senhaNova: String;
+export class NovaSenhaModel {
+  constructor(
+    public email: String,
+    public token: String,
+    public senhaNova: String
+  ) {}
 }

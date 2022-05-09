@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: RouteNames.AREAS, loadChildren: () => import('./modules/area/area.module').then(m => m.AreaModule) },
   { path: RouteNames.ALUNOS, loadChildren: () => import('./modules/aluno/aluno.module').then(m => m.AlunoModule) },
   // { path: RouteNames.REALIZAR_PROVA, loadChildren: () => import('./modules/realizar-prova/realizar-prova.module').then(m => m.RealizarProvaModule) },
-  // { path: RouteNames.PROVA_REALIZADA, loadChildren: () => import('./modules/prova-realizada/prova-realizada.module').then(m => m.ProvaRealizadaModule) },
+  { path: RouteNames.PROVAS_REALIZADAS, loadChildren: () => import('./modules/prova-realizada/prova-realizada.module').then(m => m.ProvaRealizadaModule) },
   { path: '', component: BoasVindasComponent }
 ];
 

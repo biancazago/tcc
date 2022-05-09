@@ -1,4 +1,3 @@
-export class EsqueceuSenha {
-    email: String;
-
+export class EsqueceuSenhaModel {
+  constructor(public email: String) {}
 }

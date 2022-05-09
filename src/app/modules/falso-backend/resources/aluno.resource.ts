@@ -1,7 +1,6 @@
 import { Observable } from "rxjs";
-import { TiposUtil } from "src/app/shared/tipos.util";
+import { TiposUtil } from "src/app/shared/util/tipos.util";
 import { AlunoModel } from "../../aluno/model/aluno.model";
-import { AlunoService } from "../../login/service/login.service";
 import { CrudService } from "../services/crud.service";
 import { ResponseUtil } from "../shared/response.util";
 

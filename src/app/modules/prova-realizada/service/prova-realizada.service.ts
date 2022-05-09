@@ -1,23 +1,19 @@
-import { ProvaRealizada } from '../model/prova-realizada.model';
-import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpRequest, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class ProvaRealizadaService {
+  private serviceUrl: string = environment.apiServiceUrl + "/prova-realizada";
 
-    serviceUrl = "/prova-realizada" //environment.apiServiceUrl + "/prova-realizada";
+  constructor(private http: HttpClient) { }
 
-    constructor(private http: HttpClient) { }
+  public obterPorId(id: number): Observable<any> {
+    return this.http.get(`${this.serviceUrl}/${id}`);
+  }
 
-    
-    obterPorId(id: number): Observable<any> {
-        return this.http.get(`${this.serviceUrl}/${id}`);
-    }
-
-
-    obterTodos(): Observable<any> {
-        return this.http.get(this.serviceUrl + '/listar/');
-    }
+  public obterTodos(): Observable<any> {
+    return this.http.get(this.serviceUrl + '/listar/');
+  }
 }

@@ -1,50 +1,53 @@
-<div class="ui-g-8 ui-md-8 ui-sm-8">
-    <div class="ui-g ui-fluid">
-        <div class="ui-g-12 ui-md-12 ui-sm-12">
-            <div class="display-flex ">
-                <span class="font-weight-bold"> Lista de provas realizadas:</span>
-            </div>
-        
-            <p-table [columns]="cols" [value]="pageResponse.content" [paginator]="true" [rows]="10" [lazy]="true"
-                (onPage)="preencherTabela()" emptyMessage="Nenhum registro encontrado"
-                [totalRecords]="pageResponse.totalElements" [(selection)]="selectedCars3" dataKey="vin">
-                <ng-template pTemplate="header" let-columns>
-                    <tr>
-                        <th *ngFor="let col of columns">
-                            {{col.header}}
-                            <input *ngIf="col.filter" pInputText type="text" (input)="preencherTabela($event.target.value, col.field, 'cotains')">
-                            <p *ngIf="!col.filter"></p>
-
-                        </th>
-                        <th>
-                            {{"Botões"}}
-                        </th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rowData let-columns="columns">
-                    <tr>
-
-                        <td *ngFor="let col of columns">
-                            {{rowData[col.field]}}
-                        </td>
-                        <td>
-                            <div class="display-flex flex-wrap justify-content-end">
-                                <span class="margin-x-1 ui-inputgroup-addon font-size-20px">
-                                    <i (click)="visualizarProvaRealizada(rowData.id)" class="pi pi-eye cursor-pointer "></i>
-                                </span>
-                               
-                            </div>
-                        </td>
-                    </tr>
-                </ng-template>
-                <!-- <ng-template pTemplate="summary">
-                    <ul>
-                        <li *ngFor="let car of selectedCars3" style="text-align: left">
-                            {{car.vin + ' - ' + car.brand + ' - ' + car.year + ' - ' + car.color}}
-                        </li>
-                    </ul>
-                </ng-template> -->
-            </p-table>
-        </div>
+<h1>Provas Realizadas</h1>
+<hr />
+<div class="display-flex padding-1 overflow-x-auto">
+  <div class="card card-prova" *ngFor="let prova of provas" (click)="provaSelecionada = prova">
+    <h3 class="margin-0px">Prova</h3>
+    <hr />
+    <span>
+      <b>Nome:</b><br />
+      {{prova.nome}}<br />
+    </span>
+    <span>
+      <b>Aluno:</b><br />
+      {{prova.aluno}}<br />
+    </span>
+    <span>
+      <b>Professor(a):</b><br />
+      {{prova.professor}}<br />
+    </span>
+    <span>
+      <b>Data:</b><br />
+      {{prova.data | date:"dd/MM/yyyy"}}<br />
+    </span>
+    <span>
+      <b>Pontuação:</b><br />
+      {{prova.pontuacao}}%<br />
+    </span>
+  </div>
+</div>
+<div class="card margin-top-4" *ngIf="provaSelecionada">
+  <h2 class="margin-0px">{{provaSelecionada.nome}}</h2>
+  <div class="ui-g">
+    <div class="ui-sm-12 ui-md-6 ui-lg-4">
+      <b>Nome:</b><br />
+      {{provaSelecionada.nome}}<br />
     </div>
+    <div class="ui-sm-12 ui-md-6 ui-lg-4">
+      <b>Aluno:</b><br />
+      {{provaSelecionada.aluno}}<br />
+    </div>
+    <div class="ui-sm-12 ui-md-6 ui-lg-4">
+      <b>Professor(a):</b><br />
+      {{provaSelecionada.professor}}<br />
+    </div>
+    <div class="ui-sm-12 ui-md-6 ui-lg-4">
+      <b>Data:</b><br />
+      {{provaSelecionada.data | date:"dd/MM/yyyy"}}<br />
+    </div>
+    <div class="ui-sm-12 ui-md-6 ui-lg-4">
+      <b>Pontuação:</b><br />
+      {{provaSelecionada.pontuacao}}%<br />
+    </div>
+  </div>
 </div>

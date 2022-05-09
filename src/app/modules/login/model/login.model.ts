@@ -1,5 +1,6 @@
 export class Login {
-    senha: String;
-    email: String;
-
+  constructor(
+    public senha: String,
+    public email: String,
+  ) {}
 }

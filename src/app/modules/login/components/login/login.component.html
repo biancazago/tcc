@@ -1,62 +1,37 @@
-<form [formGroup]="formulario" (submit)="logar(formulario)">
-    <div class="ui-g-8 ui-md-8 ui-sm-8">
-        <div class="ui-g ui-fluid">
-            <div class="ui-g-12 ui-md-12 ui-sm-12">
-                <div class="ui-g-12 ui-md-12 ui-sm-12">
-                    <div class="display-flex">
-                        <span class="font-weight-bold">Login:</span>
-                    </div>
-                    
-                    <div class="padding-left-2">
-                        <div class="display-flex">
-                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
-                                <input type="email" class="g-inputtext" [(ngModel)]="login.email"
-                                    formControlName="email" required pInputText maxlength="255" />
-                                <label for="email">Email</label>
-                            </div>
-                        </div>
-                        <p-message severity="error"
-                            *ngIf="!formulario.controls['email'].valid &&
-                formulario.controls['email'].dirty || formulario.controls['email'].touched && !formulario.controls['email'].valid"
-                            text="Campo Obrigatório"></p-message>
-
-                        <div class="display-flex">
-
-                        </div>
-
-                    </div>
-
-                    <div class="padding-left-2">
-                        <div class="display-flex">
-                            <div class="flex-3 display-flex margin-right-1 g-inputgroup ui-inputgroup ui-float-label">
-                                <input type="password" class="g-inputtext" [(ngModel)]="login.senha"
-                                    formControlName="senha" required pInputText maxlength="100" />
-                                <label for="senha">Senha</label>
-                            </div>
-                        </div>
-                        <p-message severity="error"
-                            *ngIf="!formulario.controls['senha'].valid &&
-                formulario.controls['senha'].dirty || formulario.controls['senha'].touched && !formulario.controls['senha'].valid"
-                            text="Campo Obrigatório"></p-message>
-
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <p-footer>
-            <div class="ui-g-12">
-                <hr>
-                <div class="padding-top-1 display-flex justify-content-end">
-                    
-                    <div class="padding-right-1">
-                        <p-button class="g-button  button-primary" type="submit" label="ENTRAR"
-                            [disabled]="!formulario.valid">
-                        </p-button>
-                    </div>
-                </div>
-            </div>
-        </p-footer>
+<h1 class="margin-0">Login</h1>
+<hr />
+<form [formGroup]="formulario">
+  <div class="ui-g margin-top-2">
+    <div class="ui-sm-12 ui-md-6 ui-lg-4 ui-xl-3">
+      <div class="ui-float-label g-inputgroup">
+        <input class="width-100" type="text" formControlName="email" pInputText />
+        <label>E-Mail</label>
+      </div>
+      <app-erros-formulario nomeDoCampo="email"></app-erros-formulario>
     </div>
+    <div class="ui-sm-12 ui-md-6 ui-lg-4 ui-xl-3">
+      <div class="ui-float-label g-inputgroup">
+        <input class="width-100" type="password" formControlName="senha" pInputText />
+        <label>Senha</label>
+      </div>
+      <app-erros-formulario nomeDoCampo="senha"></app-erros-formulario>
+    </div>
+  </div>
 </form>
+<hr />
+<div class="padding-2 display-flex justify-content-end">
+  <p-button label="Entrar" class="margin-right-2" (onClick)="logar()"></p-button>
+  <p-button label="Esqueci Minha Senha" pTooltip="Preencha pelo menos o email no campo devido." tooltipPosition="top" (onClick)="esqueceuSenha()"></p-button>
+</div>
+<p-dialog header="Mudança de Senha" [visible]="mostrarDialogMudancaSenha" [closable]="false">
+  <p>
+    Um email foi enviado para sua caixa de entrada contendo um link para que você possa redefinir sua senha.<br />
+    Se não achá-lo em sua caixa de entrada, cheque as pastas de SPAM ou Lixo Eletrônico.
+  </p>
+  <div class="padding-2 display-flex justify-content-center">
+    <p-button class="margin-right-2" icon="pi pi-check" label="Ok" (onClick)="esconderModalMudancaSenha()"></p-button>
+    <!-- TODO: remover -->
+    <p-button label="Redefinir Senha" routerLink="nova-senha"></p-button>
+  </div>
+</p-dialog>
+<p-toast></p-toast>

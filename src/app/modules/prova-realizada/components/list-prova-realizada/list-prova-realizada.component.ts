@@ -1,75 +1,27 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ProvaRealizada } from '../../model/prova-realizada.model';
-import { Page } from '../../../../models/page';
-import { Prova } from '../../../prova/model/prova.model';
+import { Component } from '@angular/core';
+import { ProvaRealizadaModel } from '../../model/prova-realizada.model';
 
 @Component({
   selector: 'app-list-prova-realizada',
   templateUrl: './list-prova-realizada.component.html',
-  styleUrls: ['./list-prova-realizada.component.sass']
+  styleUrls: ['./list-prova-realizada.component.scss']
 })
-export class ListProvaRealizadaComponent implements OnInit {
-
-
-  // public pageResponse: Page<any> = new Page();
-
-  // selectedCars3: any[];
-
-
-  cols = [
-    { field: 'id', header: 'ID', filter: false },
-    { field: 'idProva', header: 'ID da Prova', filter: false },
-    { field: 'nome', header: 'Nome', filter: false },
-    { field: 'aluno', header: 'Aluno', filter: false },
-    { field: 'professor', header: 'Professor', filter: true },
-    { field: 'data', header: 'Data', filter: true },
-    { field: 'pontuacao', header: 'Pontuação', filter: false },
-
+export class ListProvaRealizadaComponent {
+  public provas: ProvaRealizadaModel[] = [
+    new ProvaRealizadaModel(1, 5, 'Prova de física 1', 'Tião Morelato', 'João José', new Date('2021-12-01T00:00:00'), 80),
+    new ProvaRealizadaModel(1, 5, 'Prova de geografia avançada', 'Marcela Ferraz', 'João José', new Date('2020-07-25T00:00:00'), 50),
+    new ProvaRealizadaModel(1, 5, 'Prova de física 1', 'Tião Morelato', 'João José', new Date('2021-12-01T00:00:00'), 80),
+    new ProvaRealizadaModel(1, 5, 'Prova de geografia avançada', 'Marcela Ferraz', 'João José', new Date('2020-07-25T00:00:00'), 50),
+    new ProvaRealizadaModel(1, 5, 'Prova de física 1', 'Tião Morelato', 'João José', new Date('2021-12-01T00:00:00'), 80),
+    new ProvaRealizadaModel(1, 5, 'Prova de geografia avançada', 'Marcela Ferraz', 'João José', new Date('2020-07-25T00:00:00'), 50),
+    new ProvaRealizadaModel(1, 5, 'Prova de física 1', 'Tião Morelato', 'João José', new Date('2021-12-01T00:00:00'), 80),
+    new ProvaRealizadaModel(1, 5, 'Prova de geografia avançada', 'Marcela Ferraz', 'João José', new Date('2020-07-25T00:00:00'), 50),
+    new ProvaRealizadaModel(1, 5, 'Prova de física 1', 'Tião Morelato', 'João José', new Date('2021-12-01T00:00:00'), 80),
+    new ProvaRealizadaModel(1, 5, 'Prova de geografia avançada', 'Marcela Ferraz', 'João José', new Date('2020-07-25T00:00:00'), 50),
+    new ProvaRealizadaModel(1, 5, 'Prova de física 1', 'Tião Morelato', 'João José', new Date('2021-12-01T00:00:00'), 80),
+    new ProvaRealizadaModel(1, 5, 'Prova de geografia avançada', 'Marcela Ferraz', 'João José', new Date('2020-07-25T00:00:00'), 50),
   ];
-
-  // professor: Professor[]
-
-  public pageResponse: Page<ProvaRealizada> = new Page();
-
-  selectedCars3: any[];
-
-
-  // cols = [
-  //   { field: 'id', header: 'ID' },
-  //   { field: 'nome', header: 'Nome' },
-  //   { field: 'email', header: 'Email' },
-
-  // ];
-
-  provas = [
-      { id: 1, idProva: 5, nome: "sss", aluno: "joão jose", professor: "Tião", data: Date(), pontuacao: "80%"},
-      { id: 2, idProva: 5, nome: "dfsd", aluno: "maria da silva", professor: "Tião", data: Date(), pontuacao: "80%" }
-    ]
+  public provaSelecionada?: ProvaRealizadaModel;
 
   constructor() { }
-
-  ngOnInit(): void {
-    this.preencherTabela();
-    // console.log(this.professor)
-  }
-
-  preencherTabela(valor = null, campo = null, tipo= null) {
-    // this.professor = [
-    //   { id: 1, nome: "sss", email: "aaa@hotmail.com" },
-    //   { id: 2, nome: "dfsd", email: "bbbbbb@hotmail.com" }
-
-    // ]
-    console.log("AAAAA", valor, campo, tipo)
-    this.pageResponse.content = this.provas
-    this.pageResponse.totalElements = 2
-    this.pageResponse.totalPages = 1
-
-  }
-
-  visualizarProvaRealizada(id) {
-
-  }
-
-
 }

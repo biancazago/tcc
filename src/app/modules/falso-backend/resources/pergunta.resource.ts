@@ -1,5 +1,5 @@
 import { Observable } from "rxjs";
-import { TiposUtil } from "src/app/shared/tipos.util";
+import { TiposUtil } from "src/app/shared/util/tipos.util";
 import { AreaModel } from "../../area/model/area.model";
 import { OpcaoModel } from "../../pergunta/model/opcao.model";
 import { PerguntaModel } from "../../pergunta/model/pergunta.model";

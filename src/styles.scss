@@ -75,6 +75,7 @@ html, body {
     padding: 0;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 .margin-0px {
@@ -709,6 +710,10 @@ html, body {
 
 .overflow-y-auto {
     overflow-y: auto;
+}
+
+.overflow-x-auto {
+    overflow-x: auto;
 }
 
 .cursor-pointer {

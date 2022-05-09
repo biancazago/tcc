@@ -1,4 +1,4 @@
-import { TiposUtil } from "src/app/shared/tipos.util";
+import { TiposUtil } from "src/app/shared/util/tipos.util";
 import { Identificavel } from "src/app/shared/util/identificavel";
 
 export class CrudService<T extends Identificavel> {

@@ -1,6 +1,9 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { NovaSenha } from '../../model/nova-senha.model';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { MessageService } from 'primeng';
+import { MensagemUtil } from 'src/app/shared/util/mensagem.util';
+import { PrimengUtil } from 'src/app/shared/util/primeng.util';
+import { LoginService } from '../../service/login.service';
 
 @Component({
   selector: 'app-nova-senha',
@@ -8,36 +11,71 @@ import { NovaSenha } from '../../model/nova-senha.model';
   styleUrls: ['./nova-senha.component.sass']
 })
 export class NovaSenhaComponent implements OnInit {
-
-  formulario: FormGroup
-
-  novaSenha = new NovaSenha()
+  public formulario: FormGroup;
+  public mostrarModalSucesso: boolean = false;
+  public confirmarSenha: string;
 
   constructor(
-    private formBuilder: FormBuilder
-  ) { }
+    private formBuilder: FormBuilder,
+    private loginService: LoginService,
+    private messageService: MessageService
+  ) {}
 
-  ngOnInit(): void {
-    this.iniciarForm();
+  public ngOnInit(): void {
+    this.inicializarFormulario();
   }
 
-  iniciarForm() {
+  public mudarSenha(): void {
+    if(!this.formulario.valid) {
+      PrimengUtil.mensagemErro(this.messageService, MensagemUtil.ERRO_PROCESSAR, MensagemUtil.VERIFICAR_DADOS);
+      return;
+    }
+    this.loginService.mudarSenha(this.formulario.getRawValue()).subscribe(() => {
+      this.mostrarModalSucesso = true;
+    });
+  }
+
+  public senhasBatem(): boolean {
+    return this.confirmarSenha === this.formulario?.get('senhaNova').value;
+  }
+
+  private inicializarFormulario(): void {
     this.formulario = this.formBuilder.group({
-      senhaAtual: [null, [Validators.required]],
-      senha: [null, [Validators.required]],
-      senhaConfirmada: [null, [Validators.required]],
-
-        }, { updateOn: "blur" });
+      email: new FormControl('', [Validators.required, Validators.email]),
+      senhaNova: new FormControl('', [Validators.required]),
+      token: new FormControl('ewfsokfnseofjewnojefno', [Validators.required])
+    });
   }
 
-  voltar() {
+  // formulario: FormGroup
 
-  }
+  // novaSenha = new NovaSenhaModel()
 
-  salvar(formulario) {
-    
-  }
+  // constructor(
+  //   private formBuilder: FormBuilder
+  // ) { }
+
+  // ngOnInit(): void {
+  //   this.iniciarForm();
+  // }
+
+  // iniciarForm() {
+  //   this.formulario = this.formBuilder.group({
+  //     senhaAtual: [null, [Validators.required]],
+  //     senha: [null, [Validators.required]],
+  //     senhaConfirmada: [null, [Validators.required]],
+
+  //       }, { updateOn: "blur" });
+  // }
+
+  // voltar() {
+
+  // }
+
+  // salvar(formulario) {
+
+  // }
 
 
-  
+
 }
