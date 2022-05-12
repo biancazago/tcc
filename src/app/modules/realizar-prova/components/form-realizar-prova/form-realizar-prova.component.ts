@@ -1,6 +1,12 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { RealizarProva } from '../../model/realizar-prova.model';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng';
+import { OpcaoModel } from 'src/app/modules/pergunta/model/opcao.model';
+import { PerguntaModel } from 'src/app/modules/pergunta/model/pergunta.model';
+import { PrimengUtil } from 'src/app/shared/util/primeng.util';
+import { RouteNames, RouteUtils } from 'src/app/shared/util/route-names';
+import { RealizarProvaModel } from '../../model/realizar-prova.model';
 
 @Component({
   selector: 'app-form-realizar-prova',
@@ -8,52 +14,48 @@ import { RealizarProva } from '../../model/realizar-prova.model';
   styleUrls: ['./form-realizar-prova.component.sass']
 })
 export class FormRealizarProvaComponent implements OnInit {
-
-  formulario: FormGroup
-
-  realizarProva = new RealizarProva()
-
-  selectedValue: string[] = [];
-
-
-  text: string = "<p>PERGUNTA 1!</p><p>PrimeNG <strong>Editor</strong>"
-  
-  prova = {
-    id: 1, descricao: "desc da prova 1 slsmdsmmfs ofdfsdfmosdmf elfnwfsndfksfnsdfdsfs", perguntaLista: [{
-      id: 2, descricao: "pergunta1", opcao1: "aaa", opcao2: "ssss",
-      opcao3: "dddd", opcao4: "aas", opcao5: "cc", opcaoCorreta: "opcao1"
-    },
-    {
-      id: 3, descricao: "<p>PERGUNTA 1!</p>", opcao1: "affdfsfsdfdfaa", opcao2: "s fddf  sss",
-      opcao3: "sdsdsdadasdadad", opcao4: " fdfv df", opcao5: "c  c", opcaoCorreta: "opcao1"
-    }],
-    area: { id: 1, nome: "area1" }, data: new Date()
-  }
+  public indicadorQuestaoAtual: number = 0;
+  public prova: RealizarProvaModel = new RealizarProvaModel(1, 'Prova de Matemática', 'Questões de Aritmética', 'Fabrícia Cortês', new Date(), 'Matemática', [
+    new PerguntaModel(1, 'Quantas faces tem um cubo?', [
+      new OpcaoModel(1, '1'),
+      new OpcaoModel(2, '2'),
+      new OpcaoModel(3, '5'),
+      new OpcaoModel(4, '6'),
+      new OpcaoModel(5, '9'),
+    ]),
+    new PerguntaModel(1, 'Quantos mL há em um L?', [
+      new OpcaoModel(6, '1000'),
+      new OpcaoModel(7, '2000'),
+      new OpcaoModel(8, '5000'),
+      new OpcaoModel(9, '6000'),
+      new OpcaoModel(10, '9000'),
+    ]),
+  ]);
 
   constructor(
-    private formBuilder: FormBuilder
-  ) { }
+    private messageService: MessageService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-    this.iniciarForm();
+  public ngOnInit(): void {}
+
+  public salvar(): void {
+    PrimengUtil.mensagemInformacao(this.messageService, 'Finalizando Fluxo', '');
   }
 
-  iniciarForm() {
-    this.formulario = this.formBuilder.group({
-      nome: [null, [Validators.required]],
-      descricao: [null, [Validators.required]],
-    }, { updateOn: "blur" });
+  public voltar(): void {
+    this.router.navigateByUrl(RouteUtils.formarRota([RouteNames.REALIZAR_PROVA], true));
   }
 
-  voltar() {
-
+  public avancar(): void {
+    this.indicadorQuestaoAtual++;
   }
 
-  salvar(formulario) {
-
-    console.log(formulario);
+  public regredir(): void {
+    this.indicadorQuestaoAtual--;
   }
 
-
-
+  public obterQuestaoAtual(): PerguntaModel {
+    return this.prova.perguntaLista[this.indicadorQuestaoAtual];
+  }
 }

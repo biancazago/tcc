@@ -3,6 +3,7 @@ import {
   InputSwitchModule, InputTextareaModule, InputTextModule, MessageModule, MessagesModule,
   MultiSelectModule,
   PickListModule,
+  RadioButtonModule,
   TableModule, ToastModule, TooltipModule
 } from "primeng";
 
@@ -29,5 +30,6 @@ export const PRIMENG_IMPORTS: any = [
   ToastModule,
   MultiSelectModule,
   CalendarModule,
-  PickListModule
+  PickListModule,
+  RadioButtonModule
 ];

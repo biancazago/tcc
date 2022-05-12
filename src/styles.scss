@@ -1015,3 +1015,17 @@ body .ui-listbox {
 
 }
 
+.card-simples {
+  box-shadow: 0 3px 3px #00000044;
+  padding: 10px;
+}
+
+.card-prova {
+  min-width: 200px;
+  width: 100vh;
+  max-width: 400px;
+  margin: 10px;
+  background-color: #ffeeaa;
+  border: 1px solid #ffff00;
+  &:hover { border: 1px solid #ffaa44; }
+}

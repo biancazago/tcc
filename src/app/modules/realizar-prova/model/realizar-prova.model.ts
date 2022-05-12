@@ -1,11 +1,13 @@
-export class RealizarProva {
+import { PerguntaModel } from "../../pergunta/model/pergunta.model";
 
-    id: number;
-    nome: String;
-    descricao: string;
-    professor: string;
-    data: Date;
-    area: string;
-    perguntaLista = [];
-
+export class RealizarProvaModel {
+  constructor(
+    public id?: number,
+    public nome?: String,
+    public descricao?: string,
+    public professor?: string,
+    public data?: Date,
+    public area?: string,
+    public perguntaLista: PerguntaModel[] = []
+  ) { }
 }

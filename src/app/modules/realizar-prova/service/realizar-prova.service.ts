@@ -1,4 +1,4 @@
-import { RealizarProva } from '../model/realizar-prova.model';
+import { RealizarProvaModel } from '../model/realizar-prova.model';
 import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpParams } from '@angular/common/http';
@@ -11,7 +11,7 @@ export class RealizarProvaService {
 
     constructor(private http: HttpClient) { }
 
-    salvar(radar: RealizarProva): Observable<any> {
+    salvar(radar: RealizarProvaModel): Observable<any> {
         return this.http.post(this.serviceUrl, radar);
     }
 
@@ -23,8 +23,8 @@ export class RealizarProvaService {
         return this.http.get(`${this.serviceUrl}/${id}`);
     }
 
-    converterItemFromServer(json: any): RealizarProva {
-        const radar: RealizarProva = Object.assign(new RealizarProva(), json);
+    converterItemFromServer(json: any): RealizarProvaModel {
+        const radar: RealizarProvaModel = Object.assign(new RealizarProvaModel(), json);
         return radar;
     }
 

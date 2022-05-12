@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { RealizarProva } from '../../model/realizar-prova.model';
+import { RealizarProvaModel } from '../../model/realizar-prova.model';
 import { Page } from '../../../../models/page';
+import { PerguntaModel } from 'src/app/modules/pergunta/model/pergunta.model';
+import { OpcaoModel } from 'src/app/modules/pergunta/model/opcao.model';
 
 @Component({
   selector: 'app-list-realizar-prova',
@@ -9,62 +11,23 @@ import { Page } from '../../../../models/page';
   styleUrls: ['./list-realizar-prova.component.sass']
 })
 export class ListRealizarProvaComponent {
-
-
-  // // public pageResponse: Page<any> = new Page();
-
-  // // selectedCars3: any[];
-
-
-  // cols = [
-  //   { field: 'id', header: 'ID' },
-  //   { field: 'nome', header: 'Nome' },
-  //   { field: 'descricao', header: 'Descrição' },
-  //   { field: 'professor', header: 'Professor' },
-
-  // ];
-
-  // // professor: Professor[]
-
-  // public pageResponse: Page<Prova> = new Page();
-
-  // selectedCars3: any[];
-
-
-  // // cols = [
-  // //   { field: 'id', header: 'ID' },
-  // //   { field: 'nome', header: 'Nome' },
-  // //   { field: 'email', header: 'Email' },
-
-  // // ];
-
-  // provas = [
-  //     { id: 1, nome: "sss", descricao: "aaa@hotmail.com", professor: "asasa"},
-  //     { id: 2, nome: "dfsd", descricao: "bbbbbb@hotmail.com", professor: "asasa" }
-  //   ]
-
-  // constructor() { }
-
-  // ngOnInit(): void {
-  //   this.preencherTabela();
-  //   // console.log(this.professor)
-  // }
-
-  // preencherTabela() {
-  //   // this.professor = [
-  //   //   { id: 1, nome: "sss", email: "aaa@hotmail.com" },
-  //   //   { id: 2, nome: "dfsd", email: "bbbbbb@hotmail.com" }
-
-  //   // ]
-  //   this.pageResponse.content = this.provas
-  //   this.pageResponse.totalElements = 2
-  //   this.pageResponse.totalPages = 1
-
-  // }
-
-  // iniciarProva(id) {
-
-  // }
-
+  public provas: RealizarProvaModel[] = [
+    new RealizarProvaModel(1, 'Prova de Matemática', 'Questões de Aritmética', 'Fabrícia Cortês', new Date(), 'Matemática', [
+      new PerguntaModel(1, 'Quantas faces tem um cubo?', [
+        new OpcaoModel(1, '1'),
+        new OpcaoModel(2, '2'),
+        new OpcaoModel(3, '5'),
+        new OpcaoModel(4, '6'),
+        new OpcaoModel(5, '9'),
+      ]),
+      new PerguntaModel(1, 'Quantos mL há em um L?', [
+        new OpcaoModel(6, '1000'),
+        new OpcaoModel(7, '2000'),
+        new OpcaoModel(8, '5000'),
+        new OpcaoModel(9, '6000'),
+        new OpcaoModel(10, '9000'),
+      ]),
+    ])
+  ];
 
 }
