@@ -6,7 +6,7 @@ import { ProvaRealizadaRoutingModule } from './prova-realizada-routing.module';
 
 @NgModule({
   declarations: [
-      ListProvaRealizadaComponent
+    ListProvaRealizadaComponent
   ],
   imports: [
     SharedModule,

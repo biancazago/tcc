@@ -17,6 +17,7 @@ export class AppComponent {
     PrimengUtil.criarMenuItem('Pergunta', RouteUtils.formarRota([RouteNames.PERGUNTAS], true), 'pi pi-question-circle'),
     PrimengUtil.criarMenuItem('Prova', RouteUtils.formarRota([RouteNames.PROVAS], true), 'pi pi-copy'),
     PrimengUtil.criarMenuItem('Área', RouteUtils.formarRota([RouteNames.AREAS], true), 'pi pi-sitemap'),
+    PrimengUtil.criarMenuItem('Realizar Prova', RouteUtils.formarRota([RouteNames.REALIZAR_PROVA], true), 'pi pi-pencil'),
     PrimengUtil.criarMenuItem('Prova Realizada', RouteUtils.formarRota([RouteNames.PROVAS_REALIZADAS], true), 'pi pi-check'),
   ];
 

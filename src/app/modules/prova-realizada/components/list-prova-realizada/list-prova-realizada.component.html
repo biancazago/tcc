@@ -1,7 +1,28 @@
 <h1>Provas Realizadas</h1>
 <hr />
+<div>
+  <p-button icon="pi pi-search" label="Filtros" (onClick)="mostrarFiltros = !mostrarFiltros"></p-button>
+  <div class="ui-g" *ngIf="mostrarFiltros">
+    <div class="ui-sm-12 ui-md-6 ui-lg-4">
+      <div>Aluno:</div>
+      <input class="width-100" pInputText [(ngModel)]="filtroAluno">
+    </div>
+    <div class="ui-sm-12 ui-md-6 ui-lg-4">
+      <div>Professor:</div>
+      <input class="width-100" pInputText [(ngModel)]="filtroProfessor">
+    </div>
+    <div class="ui-sm-12 ui-md-6 ui-lg-4">
+      <div>Depois de:</div>
+      <p-calendar class="ui-fluid" [showIcon]="true" [(ngModel)]="filtroDataInicial"></p-calendar>
+    </div>
+    <div class="ui-sm-12 ui-md-6 ui-lg-4">
+      <div>Antes de:</div>
+      <p-calendar class="ui-fluid" [showIcon]="true" [(ngModel)]="filtroDataFinal"></p-calendar>
+    </div>
+  </div>
+</div>
 <div class="display-flex padding-1 overflow-x-auto">
-  <div class="card card-prova" *ngFor="let prova of provas" (click)="provaSelecionada = prova">
+  <div class="card card-prova" *ngFor="let prova of obterProvasFiltradas()" (click)="provaSelecionada = prova">
     <h3 class="margin-0px">Prova</h3>
     <hr />
     <span>

@@ -1,8 +1,8 @@
-import { Prova } from './../model/prova.model';
 import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { ProvaModel } from '../model/prova.model';
 
 @Injectable()
 export class ProvaService {
@@ -11,7 +11,7 @@ export class ProvaService {
 
     constructor(private http: HttpClient) { }
 
-    salvar(radar: Prova): Observable<any> {
+    salvar(radar: ProvaModel): Observable<any> {
         return this.http.post(this.serviceUrl, radar);
     }
 
@@ -23,8 +23,8 @@ export class ProvaService {
         return this.http.get(`${this.serviceUrl}/${id}`);
     }
 
-    converterItemFromServer(json: any): Prova {
-        const radar: Prova = Object.assign(new Prova(), json);
+    converterItemFromServer(json: any): ProvaModel {
+        const radar: ProvaModel = Object.assign(new ProvaModel(), json);
         return radar;
     }
 
