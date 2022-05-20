@@ -6,5 +6,5 @@ export const ANGULAR_IMPORTS: any[] = [
   CommonModule,
   ReactiveFormsModule,
   FormsModule,
-  HttpClientModule,
+  HttpClientModule
 ];

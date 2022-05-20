@@ -4,6 +4,7 @@ import { ANGULAR_IMPORTS } from './imports/angular-imports';
 import { MessageService } from 'primeng';
 import { AutenticacaoService } from './services/autenticacao.service';
 import { ErrosFormularioComponent } from './components/erros-formulario/erros-formulario.component';
+import { DatePipe } from '@angular/common';
 
 const MODULE_DECLARATIONS: any[] = [
   ErrosFormularioComponent
@@ -22,7 +23,8 @@ const MODULE_DECLARATIONS: any[] = [
   ],
   providers: [
     MessageService,
-    AutenticacaoService
+    AutenticacaoService,
+    DatePipe
   ]
 })
 export class SharedModule { }

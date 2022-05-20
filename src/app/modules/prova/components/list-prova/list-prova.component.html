@@ -3,16 +3,21 @@
 <div class="display-flex justify-content-end padding-1">
   <p-button icon="pi pi-plus margin-right-2" label="Novo" routerLink="novo"></p-button>
 </div>
-<p-table [columns]="colunas" [value]="provas" emptyMessage="Nenhum registro encontrado">
+<p-table #dt [columns]="colunas" [value]="provas" emptyMessage="Nenhum registro encontrado">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of columns" [ngStyle]="{'width': col.tamanho}">{{ col.cabecalho }}</th>
-      <th style="width: 120px">Ações</th>
+      <th style="width: 120px" rowspan="2">Ações</th>
+    </tr>
+    <tr>
+      <th *ngFor="let col of columns">
+        <input pInputText class="width-100" type="text" (input)="dt.filter($event.target.value, col.campo, 'contains')">
+      </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-rowData let-columns="columns">
     <tr>
-      <td *ngFor="let col of columns">{{ rowData[col.campo] }}</td>
+      <td *ngFor="let col of columns">{{ col.adaptar(rowData) }}</td>
       <td>
         <div class="display-flex justify-content-between">
           <p-button icon="pi pi-trash"></p-button>
