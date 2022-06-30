@@ -22,8 +22,8 @@ export class ListAlunoComponent implements OnInit {
   ];
 
   alunos = [
-      { id: 1, nome: "sss", email: "xxxxxxxxx@hotmail.com"},
-      { id: 2, nome: "dfsd", email: "xxx@gmailcom" }
+      { id: 1, nome: "Gustavo Souza", email: "gusta@hotmail.com"},
+      { id: 2, nome: "Ana Silva", email: "ana@gmailcom" }
     ]
 
   constructor() { }

@@ -37,7 +37,7 @@ areasBusca = [
   selectedCars3: any
 
   perguntas: any[] = [
-    { descricao: 'vin', id: 1, professor: "João", area: 'tec'},
+    { descricao: 'O que é orientação obj?', id: 1, professor: "João", area: 'tec'},
   ];
 
   public pageResponse: Page<Pergunta> = new Page();

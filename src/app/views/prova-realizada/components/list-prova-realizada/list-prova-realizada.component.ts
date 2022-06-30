@@ -43,8 +43,8 @@ export class ListProvaRealizadaComponent implements OnInit {
   // ];
 
   provas = [
-      { id: 1, idProva: 5, nome: "sss", aluno: "joão jose", professor: "Tião", data: Date(), pontuacao: "80%"},
-      { id: 2, idProva: 5, nome: "dfsd", aluno: "maria da silva", professor: "Tião", data: Date(), pontuacao: "80%" }
+      { id: 1, idProva: 5, nome: "Prova 1", aluno: "Gustavo Souza", professor: "Maria de Lourdes", data: Date(), pontuacao: "80%"},
+      { id: 2, idProva: 5, nome: "Prova 1", aluno: "Ana Silva", professor: "Maria de Lourdes", data: Date(), pontuacao: "80%" }
     ]
 
   constructor() { }

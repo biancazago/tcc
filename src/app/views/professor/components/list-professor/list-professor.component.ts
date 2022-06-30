@@ -25,8 +25,8 @@ export class ListProfessorComponent implements OnInit {
   ];
 
   professores = [
-      { id: 1, nome: "sss", email: "aaa@hotmail.com" },
-      { id: 2, nome: "dfsd", email: "bbbbbb@hotmail.com" }
+      { id: 1, nome: "João", email: "joao@hotmail.com" },
+      { id: 2, nome: "Maria de Lourdes", email: "maria@hotmail.com" }
     ]
 
   constructor() { }
@@ -38,9 +38,8 @@ export class ListProfessorComponent implements OnInit {
 
   preencherTabela() {
     this.professor = [
-      { id: 1, nome: "sss", email: "aaa@hotmail.com" },
-      { id: 2, nome: "dfsd", email: "bbbbbb@hotmail.com" }
-
+      { id: 1, nome: "João", email: "joao@hotmail.com" },
+      { id: 2, nome: "Maria de Lourdes", email: "maria@hotmail.com" }
     ]
     this.pageResponse.content = this.professor
     this.pageResponse.totalElements = 2

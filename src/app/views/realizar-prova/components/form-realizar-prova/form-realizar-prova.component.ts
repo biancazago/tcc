@@ -19,15 +19,15 @@ export class FormRealizarProvaComponent implements OnInit {
   text: string = "<p>PERGUNTA 1!</p><p>PrimeNG <strong>Editor</strong>"
   
   prova = {
-    id: 1, descricao: "desc da prova 1 slsmdsmmfs ofdfsdfmosdmf elfnwfsndfksfnsdfdsfs", perguntaLista: [{
-      id: 2, descricao: "pergunta1", opcao1: "aaa", opcao2: "ssss",
-      opcao3: "dddd", opcao4: "aas", opcao5: "cc", opcaoCorreta: "opcao1"
+    id: 1, descricao: " Podemos já vislumbrar o modo pelo qual o novo modelo estrutural aqui preconizado representa uma abertura para a melhoria do fluxo de informações.", perguntaLista: [{
+      id: 2, descricao: "Loorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat", 
+      opcao1: "sed do eiusmod", opcao2: "XPTO", opcao3: "Loorem ipsum dolor", opcao4: "Loorem ipsum", opcao5: "consectetur adipiscing", opcaoCorreta: "opcao1"
     },
     {
-      id: 3, descricao: "<p>PERGUNTA 1!</p>", opcao1: "affdfsfsdfdfaa", opcao2: "s fddf  sss",
-      opcao3: "sdsdsdadasdadad", opcao4: " fdfv df", opcao5: "c  c", opcaoCorreta: "opcao1"
+      id: 3, descricao: "<p>Loorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat 1!</p>", 
+      opcao1: "sed do eiusmod", opcao2: "XPTO", opcao3: "Loorem ipsum dolor", opcao4: "Loorem ipsum", opcao5: "consectetur adipiscing", opcaoCorreta: "opcao1"
     }],
-    area: { id: 1, nome: "area1" }, data: new Date()
+    area: { id: 1, nome: "programação" }, data: new Date()
   }
 
   constructor(

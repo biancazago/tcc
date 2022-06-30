@@ -46,8 +46,8 @@ export class ListProvaComponent implements OnInit {
   // ];
 
   provas = [
-      { id: 1, nome: "sss", descricao: "aaa@hotmail.com", professor: "asasa", area:"Aisre"},
-      { id: 2, nome: "dfsd", descricao: "bbbbbb@hotmail.com", professor: "asasa", area:"ss" }
+      { id: 1, nome: "Prova 1", descricao: "orientação obj", professor: "Maria de Lourdes", area:"Programação"},
+      { id: 2, nome: "prova 2", descricao: "orientação obj", professor: "Maria de Lourdes", area:"Programação" }
     ]
 
   constructor() { }

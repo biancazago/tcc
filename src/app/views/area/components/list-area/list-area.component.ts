@@ -21,8 +21,8 @@ export class ListAreaComponent implements OnInit {
   ];
 
   areas = [
-      { id: 1, nome: "sss" },
-      { id: 2, nome: "dfsd" }
+      { id: 1, nome: "Programação" },
+      { id: 2, nome: "Banco de dados" }
     ]
 
   constructor() { }

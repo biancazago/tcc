@@ -22,8 +22,8 @@ export class ListPerguntaComponent implements OnInit {
   ];
 
   perguntas = [
-      { id: 1, nome: "sss", descricao: "xxxxxxxxx xsssx", professor: "asasa"},
-      { id: 2, nome: "dfsd", descricao: "sdadasdsd rerrtrt", professor: "asasa" }
+      { id: 1, nome: "Pergunta 1", descricao: "O que é orientação de objetos?", professor: "Maria de Loudes"},
+      { id: 2, nome: "Pergunta 2", descricao: "O que é banco relacional?", professor: "Maria de Loudes" }
     ]
 
   constructor() { }
